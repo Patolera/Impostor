@@ -1,0 +1,14 @@
+program Impostor;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Main in 'Main.pas' {frmImpostor};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TfrmImpostor, frmImpostor);
+  Application.Run;
+end.

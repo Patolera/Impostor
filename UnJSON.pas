@@ -1,0 +1,619 @@
+unit UnJSON;
+
+interface
+
+const JSONArquivo =
+  '[' +
+  '{"categoria":"filmes","palavra":"Titanic","dica":"navio"},' +
+  '{"categoria":"filmes","palavra":"O Poderoso Chefão","dica":"máfia"},' +
+  '{"categoria":"filmes","palavra":"Star Wars","dica":"espacial"},' +
+  '{"categoria":"filmes","palavra":"Jurassic Park","dica":"dinossauros"},' +
+  '{"categoria":"filmes","palavra":"Matrix","dica":"realidade"},' +
+  '{"categoria":"filmes","palavra":"De Volta para o Futuro","dica":"tempo"},' +
+  '{"categoria":"filmes","palavra":"Toy Story","dica":"brinquedos"},' +
+  '{"categoria":"filmes","palavra":"Interestelar","dica":"viagem espacial"},' +
+  '{"categoria":"filmes","palavra":"O Senhor dos Anéis","dica":"anel"},' +
+  '{"categoria":"filmes","palavra":"Clube da Luta","dica":"luta"},' +
+  '{"categoria":"filmes","palavra":"Pulp Fiction","dica":"diálogos"},' +
+  '{"categoria":"filmes","palavra":"Forrest Gump","dica":"corrida"},' +
+  '{"categoria":"filmes","palavra":"Gladiador","dica":"arena"},' +
+  '{"categoria":"filmes","palavra":"Tubarão","dica":"mar"},' +
+  '{"categoria":"filmes","palavra":"O Exorcista","dica":"terror"},' +
+  '{"categoria":"filmes","palavra":"Os Vingadores","dica":"heróis"},' +
+  '{"categoria":"filmes","palavra":"Top Gun","dica":"aviões"},' +
+  '{"categoria":"filmes","palavra":"Indiana Jones","dica":"aventura"},' +
+  '{"categoria":"filmes","palavra":"Blade Runner","dica":"androides"},' +
+  '{"categoria":"filmes","palavra":"O Grande Lebowski","dica":"boliche"},' +
+  '{"categoria":"filmes","palavra":"Os Infiltrados","dica":"dupla identidade"},' +
+  '{"categoria":"filmes","palavra":"Rocky","dica":"boxe"},' +
+  '{"categoria":"filmes","palavra":"Amélie Poulain","dica":"Paris"},' +
+  '{"categoria":"filmes","palavra":"A Fantástica Fábrica de Chocolate","dica":"chocolate"},' +
+  '{"categoria":"filmes","palavra":"O Silêncio dos Inocentes","dica":"investigação"},' +
+  '{"categoria":"filmes","palavra":"Trainspotting","dica":"submundo"},' +
+  '{"categoria":"filmes","palavra":"O Resgate do Soldado Ryan","dica":"guerra"},' +
+  '{"categoria":"filmes","palavra":"Ela","dica":"tecnologia"},' +
+  '{"categoria":"filmes","palavra":"A Origem","dica":"sonho"},' +
+  '{"categoria":"filmes","palavra":"Pantera Negra","dica":"reino"},' +
+  '{"categoria":"marcas","palavra":"Nike","dica":"swoosh"},' +
+  '{"categoria":"marcas","palavra":"Adidas","dica":"três listras"},' +
+  '{"categoria":"marcas","palavra":"Apple","dica":"mordida"},' +
+  '{"categoria":"marcas","palavra":"Samsung","dica":"coreana"},' +
+  '{"categoria":"marcas","palavra":"Coca-Cola","dica":"refrigerante"},' +
+  '{"categoria":"marcas","palavra":"Pepsi","dica":"concorrente"},' +
+  '{"categoria":"marcas","palavra":"Microsoft","dica":"Windows"},' +
+  '{"categoria":"marcas","palavra":"Google","dica":"busca"},' +
+  '{"categoria":"marcas","palavra":"Amazon","dica":"entregas"},' +
+  '{"categoria":"marcas","palavra":"Ferrari","dica":"cavalo"},' +
+  '{"categoria":"marcas","palavra":"Lamborghini","dica":"touro"},' +
+  '{"categoria":"marcas","palavra":"Mercedes","dica":"estrela"},' +
+  '{"categoria":"marcas","palavra":"BMW","dica":"alemã"},' +
+  '{"categoria":"marcas","palavra":"Toyota","dica":"japonesa"},' +
+  '{"categoria":"marcas","palavra":"Honda","dica":"motos"},' +
+  '{"categoria":"marcas","palavra":"Volkswagen","dica":"popular"},' +
+  '{"categoria":"marcas","palavra":"Netflix","dica":"streaming"},' +
+  '{"categoria":"marcas","palavra":"Spotify","dica":"música"},' +
+  '{"categoria":"marcas","palavra":"YouTube","dica":"vídeos"},' +
+  '{"categoria":"marcas","palavra":"Instagram","dica":"fotos"},' +
+  '{"categoria":"marcas","palavra":"Facebook","dica":"rede"},' +
+  '{"categoria":"marcas","palavra":"TikTok","dica":"curto"},' +
+  '{"categoria":"marcas","palavra":"KFC","dica":"frango"},' +
+  '{"categoria":"marcas","palavra":"McDonald''s","dica":"arcos dourados"},' +
+  '{"categoria":"marcas","palavra":"Burger King","dica":"coroa"},' +
+  '{"categoria":"marcas","palavra":"Subway","dica":"sanduíche"},' +
+  '{"categoria":"marcas","palavra":"Puma","dica":"felino"},' +
+  '{"categoria":"marcas","palavra":"Reebok","dica":"esporte"},' +
+  '{"categoria":"marcas","palavra":"Louis Vuitton","dica":"luxo"},' +
+  '{"categoria":"marcas","palavra":"Gucci","dica":"italiana"},' +
+  '{"categoria":"marcas","palavra":"Chanel","dica":"perfume"},' +
+  '{"categoria":"marcas","palavra":"Rolex","dica":"relógio"},' +
+  '{"categoria":"marcas","palavra":"Sony","dica":"eletrônicos"},' +
+  '{"categoria":"marcas","palavra":"PlayStation","dica":"console"},' +
+  '{"categoria":"marcas","palavra":"Xbox","dica":"controle verde"},' +
+  '{"categoria":"marcas","palavra":"Nokia","dica":"tijolão"},' +
+  '{"categoria":"marcas","palavra":"Motorola","dica":"celular antigo"},' +
+  '{"categoria":"marcas","palavra":"Lenovo","dica":"notebook"},' +
+  '{"categoria":"marcas","palavra":"Asus","dica":"placa-mãe"},' +
+  '{"categoria":"marcas","palavra":"Dell","dica":"corporativo"},' +
+  '{"categoria":"marcas","palavra":"HP","dica":"impressora"},' +
+  '{"categoria":"marcas","palavra":"Intel","dica":"processador"},' +
+  '{"categoria":"marcas","palavra":"AMD","dica":"rival"},' +
+  '{"categoria":"marcas","palavra":"Razer","dica":"gamer"},' +
+  '{"categoria":"marcas","palavra":"Logitech","dica":"periféricos"},' +
+  '{"categoria":"marcas","palavra":"GoPro","dica":"câmera"},' +
+  '{"categoria":"marcas","palavra":"Tesla","dica":"elétrico"},' +
+  '{"categoria":"marcas","palavra":"SpaceX","dica":"foguete"},' +
+  '{"categoria":"marcas","palavra":"Patagonia","dica":"aventura"},' +
+  '{"categoria":"marcas","palavra":"Red Bull","dica":"asas"},' +
+  '{"categoria":"marcas","palavra":"Nestlé","dica":"chocolate"},' +
+  '{"categoria":"animais","palavra":"tigre","dica":"predador"},' +
+  '{"categoria":"animais","palavra":"elefante","dica":"memória"},' +
+  '{"categoria":"animais","palavra":"golfinho","dica":"sopro"},' +
+  '{"categoria":"animais","palavra":"cavalo","dica":"corrida"},' +
+  '{"categoria":"animais","palavra":"arara","dica":"vozes"},' +
+  '{"categoria":"animais","palavra":"coruja","dica":"sabedoria"},' +
+  '{"categoria":"animais","palavra":"coelho","dica":"velocidade"},' +
+  '{"categoria":"animais","palavra":"urso","dica":"montanha"},' +
+  '{"categoria":"animais","palavra":"girafa","dica":"altura"},' +
+  '{"categoria":"animais","palavra":"camelo","dica":"resistência"},' +
+  '{"categoria":"animais","palavra":"rinoceronte","dica":"impacto"},' +
+  '{"categoria":"animais","palavra":"zebra","dica":"contraste"},' +
+  '{"categoria":"animais","palavra":"pinguim","dica":"terno"},' +
+  '{"categoria":"animais","palavra":"leão","dica":"trono"},' +
+  '{"categoria":"animais","palavra":"macaco","dica":"travessura"},' +
+  '{"categoria":"animais","palavra":"raposa","dica":"astúcia"},' +
+  '{"categoria":"animais","palavra":"cavalo-marinho","dica":"paternidade"},' +
+  '{"categoria":"animais","palavra":"polvo","dica":"mente"},' +
+  '{"categoria":"animais","palavra":"tubarão","dica":"caça"},' +
+  '{"categoria":"animais","palavra":"morcego","dica":"eco"},' +
+  '{"categoria":"animais","palavra":"gambá","dica":"defesa"},' +
+  '{"categoria":"animais","palavra":"camaleão","dica":"mudança"},' +
+  '{"categoria":"animais","palavra":"formiga","dica":"organização"},' +
+  '{"categoria":"animais","palavra":"abelha","dica":"realeza"},' +
+  '{"categoria":"animais","palavra":"borboleta","dica":"leveza"},' +
+  '{"categoria":"animais","palavra":"sapo","dica":"charco"},' +
+  '{"categoria":"animais","palavra":"corvo","dica":"presságio"},' +
+  '{"categoria":"animais","palavra":"hipopótamo","dica":"massa"},' +
+  '{"categoria":"animais","palavra":"lobo","dica":"noite"},' +
+  '{"categoria":"animais","palavra":"panda","dica":"dualidade"},' +
+  '{"categoria":"animais","palavra":"bicho-preguiça","dica":"calma"},' +
+  '{"categoria":"animais","palavra":"tucano","dica":"equilíbrio"},' +
+  '{"categoria":"animais","palavra":"onça-pintada","dica":"camuflagem"},' +
+  '{"categoria":"animais","palavra":"jacaré","dica":"paciência"},' +
+  '{"categoria":"animais","palavra":"capivara","dica":"paz"},' +
+  '{"categoria":"animais","palavra":"tamanduá","dica":"língua"},' +
+  '{"categoria":"animais","palavra":"baleia","dica":"canção"},' +
+  '{"categoria":"animais","palavra":"falcão","dica":"precisão"},' +
+  '{"categoria":"animais","palavra":"águia","dica":"domínio"},' +
+  '{"categoria":"animais","palavra":"pavão","dica":"orgulho"},' +
+  '{"categoria":"animais","palavra":"flamingo","dica":"elegância"},' +
+  '{"categoria":"animais","palavra":"lêmure","dica":"olhar"},' +
+  '{"categoria":"animais","palavra":"canguru","dica":"salto"},' +
+  '{"categoria":"animais","palavra":"ornitorrinco","dica":"paradoxo"},' +
+  '{"categoria":"animais","palavra":"gorila","dica":"autoridade"},' +
+  '{"categoria":"animais","palavra":"chimpanzé","dica":"espelho"},' +
+  '{"categoria":"animais","palavra":"búfalo","dica":"força"},' +
+  '{"categoria":"animais","palavra":"lhama","dica":"orgulho"},' +
+  '{"categoria":"animais","palavra":"ouriço","dica":"defesa"},' +
+  '{"categoria":"animais","palavra":"caracol","dica":"abrigo"},' +
+  '{"categoria":"animais","palavra":"tartaruga","dica":"tempo"},' +
+  '{"categoria":"animais","palavra":"peixe-palhaço","dica":"lar"},' +
+  '{"categoria":"animais","palavra":"cobra","dica":"silêncio"},' +
+  '{"categoria":"animais","palavra":"aranha","dica":"paciência"},' +
+  '{"categoria":"animais","palavra":"escorpião","dica":"veneno"},' +
+  '{"categoria":"animais","palavra":"ácaro","dica":"invisível"},' +
+  '{"categoria":"animais","palavra":"formiga-cortadeira","dica":"trabalho"},' +
+  '{"categoria":"animais","palavra":"besouro","dica":"casca"},' +
+  '{"categoria":"animais","palavra":"grilo","dica":"noite"},' +
+  '{"categoria":"animais","palavra":"gavião","dica":"caçador"},' +
+  '{"categoria":"animais","palavra":"bicho-da-seda","dica":"fabricação"},' +
+  '{"categoria":"animais","palavra":"coral","dica":"profundezas"},' +
+  '{"categoria":"animais","palavra":"raia","dica":"asa"},' +
+  '{"categoria":"animais","palavra":"lagosta","dica":"banquete"},' +
+  '{"categoria":"animais","palavra":"caranguejo","dica":"lateral"},' +
+  '{"categoria":"animais","palavra":"estrela-do-mar","dica":"simetria"},' +
+  '{"categoria":"animais","palavra":"lula","dica":"fuga"},' +
+  '{"categoria":"animais","palavra":"pardal","dica":"urbano"},' +
+  '{"categoria":"animais","palavra":"gaivota","dica":"praia"},' +
+  '{"categoria":"animais","palavra":"gralha","dica":"ruído"},' +
+  '{"categoria":"animais","palavra":"javali","dica":"bravio"},' +
+  '{"categoria":"animais","palavra":"burro","dica":"persistência"},' +
+  '{"categoria":"animais","palavra":"ovelha","dica":"rebanho"},' +
+  '{"categoria":"animais","palavra":"galinha","dica":"rotina"},' +
+  '{"categoria":"animais","palavra":"pato","dica":"passeio"},' +
+  '{"categoria":"animais","palavra":"tigre","dica":"listras"},' +
+  '{"categoria":"animais","palavra":"elefante","dica":"probóscide"},' +
+  '{"categoria":"animais","palavra":"golfinho","dica":"inteligente"},' +
+  '{"categoria":"animais","palavra":"cavalo","dica":"crina"},' +
+  '{"categoria":"animais","palavra":"arara","dica":"colorido"},' +
+  '{"categoria":"animais","palavra":"coruja","dica":"noite"},' +
+  '{"categoria":"animais","palavra":"coelho","dica":"saltos"},' +
+  '{"categoria":"animais","palavra":"urso","dica":"hibernação"},' +
+  '{"categoria":"animais","palavra":"girafa","dica":"pescoço"},' +
+  '{"categoria":"animais","palavra":"camelo","dica":"deserto"},' +
+  '{"categoria":"animais","palavra":"rinoceronte","dica":"chifre"},' +
+  '{"categoria":"animais","palavra":"zebra","dica":"listras"},' +
+  '{"categoria":"animais","palavra":"pinguim","dica":"frio"},' +
+  '{"categoria":"animais","palavra":"leão","dica":"reinado"},' +
+  '{"categoria":"animais","palavra":"macaco","dica":"agilidade"},' +
+  '{"categoria":"animais","palavra":"raposa","dica":"astúcia"},' +
+  '{"categoria":"animais","palavra":"cavalo-marinho","dica":"mar"},' +
+  '{"categoria":"animais","palavra":"polvo","dica":"tentáculos"},' +
+  '{"categoria":"animais","palavra":"tubarão","dica":"predador"},' +
+  '{"categoria":"animais","palavra":"morcego","dica":"eco"},' +
+  '{"categoria":"animais","palavra":"gambá","dica":"cheiro"},' +
+  '{"categoria":"animais","palavra":"camaleão","dica":"cor"},' +
+  '{"categoria":"animais","palavra":"formiga","dica":"colônia"},' +
+  '{"categoria":"animais","palavra":"abelha","dica":"mel"},' +
+  '{"categoria":"animais","palavra":"borboleta","dica":"metamorfose"},' +
+  '{"categoria":"animais","palavra":"sapo","dica":"coaxar"},' +
+  '{"categoria":"animais","palavra":"corvo","dica":"preto"},' +
+  '{"categoria":"animais","palavra":"hipopótamo","dica":"rio"},' +
+  '{"categoria":"animais","palavra":"lobo","dica":"alcateia"},' +
+  '{"categoria":"animais","palavra":"panda","dica":"bambu"},' +
+  '{"categoria":"animais","palavra":"bicho-preguiça","dica":"devagar"},' +
+  '{"categoria":"animais","palavra":"tucano","dica":"bico grande"},' +
+  '{"categoria":"animais","palavra":"onça-pintada","dica":"selva"},' +
+  '{"categoria":"animais","palavra":"jacaré","dica":"pântano"},' +
+  '{"categoria":"animais","palavra":"capivara","dica":"tranquilidade"},' +
+  '{"categoria":"animais","palavra":"tamanduá","dica":"língua"},' +
+  '{"categoria":"animais","palavra":"baleia","dica":"gigante"},' +
+  '{"categoria":"animais","palavra":"falcão","dica":"velocidade"},' +
+  '{"categoria":"animais","palavra":"águia","dica":"altura"},' +
+  '{"categoria":"animais","palavra":"pavão","dica":"penas"},' +
+  '{"categoria":"animais","palavra":"flamingo","dica":"rosa"},' +
+  '{"categoria":"animais","palavra":"lêmure","dica":"olhos"},' +
+  '{"categoria":"animais","palavra":"canguru","dica":"bolsa"},' +
+  '{"categoria":"animais","palavra":"ornitorrinco","dica":"bico"},' +
+  '{"categoria":"animais","palavra":"gorila","dica":"força"},' +
+  '{"categoria":"animais","palavra":"chimpanzé","dica":"inteligente"},' +
+  '{"categoria":"animais","palavra":"búfalo","dica":"chifres"},' +
+  '{"categoria":"animais","palavra":"lhama","dica":"cuspe"},' +
+  '{"categoria":"animais","palavra":"golfinho","dica":"saltos"},' +
+  '{"categoria":"animais","palavra":"ouriço","dica":"espinhos"},' +
+  '{"categoria":"animais","palavra":"caracol","dica":"lento"},' +
+  '{"categoria":"animais","palavra":"tartaruga","dica":"casco"},' +
+  '{"categoria":"animais","palavra":"peixe-palhaço","dica":"nemo"},' +
+  '{"categoria":"animais","palavra":"cobra","dica":"veneno"},' +
+  '{"categoria":"animais","palavra":"aranha","dica":"teia"},' +
+  '{"categoria":"animais","palavra":"escorpião","dica":"cauda"},' +
+  '{"categoria":"animais","palavra":"ácaro","dica":"microscópico"},' +
+  '{"categoria":"animais","palavra":"formiga-cortadeira","dica":"folhas"},' +
+  '{"categoria":"animais","palavra":"besouro","dica":"casca"},' +
+  '{"categoria":"animais","palavra":"grilo","dica":"som"},' +
+  '{"categoria":"animais","palavra":"gavião","dica":"caçador"},' +
+  '{"categoria":"animais","palavra":"bicho-da-seda","dica":"fio"},' +
+  '{"categoria":"animais","palavra":"coral","dica":"colorido"},' +
+  '{"categoria":"animais","palavra":"raia","dica":"asa"},' +
+  '{"categoria":"animais","palavra":"lagosta","dica":"pinças"},' +
+  '{"categoria":"animais","palavra":"caranguejo","dica":"lateral"},' +
+  '{"categoria":"animais","palavra":"polvo","dica":"tinta"},' +
+  '{"categoria":"animais","palavra":"estrela-do-mar","dica":"braços"},' +
+  '{"categoria":"animais","palavra":"lula","dica":"tentáculos"},' +
+  '{"categoria":"animais","palavra":"pardal","dica":"pequeno"},' +
+  '{"categoria":"animais","palavra":"gaivota","dica":"praia"},' +
+  '{"categoria":"animais","palavra":"morcego","dica":"noite"},' +
+  '{"categoria":"animais","palavra":"gralha","dica":"barulho"},' +
+  '{"categoria":"animais","palavra":"javali","dica":"presas"},' +
+  '{"categoria":"animais","palavra":"burro","dica":"teimoso"},' +
+  '{"categoria":"animais","palavra":"ovelha","dica":"lã"},' +
+  '{"categoria":"animais","palavra":"galinha","dica":"ovo"},' +
+  '{"categoria":"animais","palavra":"pato","dica":"lago"},' +
+  '{"categoria":"objetos","palavra":"martelo","dica":"impacto"},' +
+  '{"categoria":"objetos","palavra":"caneta","dica":"tinta"},' +
+  '{"categoria":"objetos","palavra":"celular","dica":"chamada"},' +
+  '{"categoria":"objetos","palavra":"escova","dica":"dentes"},' +
+  '{"categoria":"objetos","palavra":"guarda-chuva","dica":"chuva"},' +
+  '{"categoria":"objetos","palavra":"relógio","dica":"tempo"},' +
+  '{"categoria":"objetos","palavra":"chave","dica":"trancar"},' +
+  '{"categoria":"objetos","palavra":"lâmpada","dica":"iluminar"},' +
+  '{"categoria":"objetos","palavra":"livro","dica":"páginas"},' +
+  '{"categoria":"objetos","palavra":"faca","dica":"cortar"},' +
+  '{"categoria":"objetos","palavra":"copo","dica":"líquido"},' +
+  '{"categoria":"objetos","palavra":"cadeira","dica":"sentar"},' +
+  '{"categoria":"objetos","palavra":"mesa","dica":"superfície"},' +
+  '{"categoria":"objetos","palavra":"televisão","dica":"tela"},' +
+  '{"categoria":"objetos","palavra":"panela","dica":"cozinhar"},' +
+  '{"categoria":"objetos","palavra":"avião","dica":"voar"},' +
+  '{"categoria":"objetos","palavra":"bicicleta","dica":"pedal"},' +
+  '{"categoria":"objetos","palavra":"carro","dica":"volante"},' +
+  '{"categoria":"objetos","palavra":"janela","dica":"vidro"},' +
+  '{"categoria":"objetos","palavra":"sapato","dica":"andar"},' +
+  '{"categoria":"objetos","palavra":"mochila","dica":"alças"},' +
+  '{"categoria":"objetos","palavra":"óculos","dica":"visão"},' +
+  '{"categoria":"objetos","palavra":"fogão","dica":"gás"},' +
+  '{"categoria":"objetos","palavra":"computador","dica":"processador"},' +
+  '{"categoria":"objetos","palavra":"teclado","dica":"digitar"},' +
+  '{"categoria":"objetos","palavra":"impressora","dica":"papel"},' +
+  '{"categoria":"objetos","palavra":"caderno","dica":"anotações"},' +
+  '{"categoria":"objetos","palavra":"carregador","dica":"energia"},' +
+  '{"categoria":"objetos","palavra":"controle","dica":"botões"},' +
+  '{"categoria":"objetos","palavra":"câmera","dica":"fotografia"},' +
+  '{"categoria":"objetos","palavra":"tesoura","dica":"corte"},' +
+  '{"categoria":"objetos","palavra":"pregador","dica":"varal"},' +
+  '{"categoria":"objetos","palavra":"controle remoto","dica":"botões"},' +
+  '{"categoria":"objetos","palavra":"abajur","dica":"luz suave"},' +
+  '{"categoria":"objetos","palavra":"micro-ondas","dica":"aquecimento"},' +
+  '{"categoria":"objetos","palavra":"espelho","dica":"reflexo"},' +
+  '{"categoria":"objetos","palavra":"travesseiro","dica":"sono"},' +
+  '{"categoria":"objetos","palavra":"colher","dica":"sopa"},' +
+  '{"categoria":"objetos","palavra":"garfo","dica":"dentes"},' +
+  '{"categoria":"objetos","palavra":"prato","dica":"comida"},' +
+  '{"categoria":"objetos","palavra":"caneca","dica":"bebida quente"},' +
+  '{"categoria":"objetos","palavra":"liquidificador","dica":"bater"},' +
+  '{"categoria":"objetos","palavra":"escada","dica":"subir"},' +
+  '{"categoria":"objetos","palavra":"aspirador","dica":"poeira"},' +
+  '{"categoria":"objetos","palavra":"ventilador","dica":"vento"},' +
+  '{"categoria":"objetos","palavra":"grampeador","dica":"papel"},' +
+  '{"categoria":"objetos","palavra":"fita adesiva","dica":"colar"},' +
+  '{"categoria":"objetos","palavra":"cadeado","dica":"segurança"},' +
+  '{"categoria":"objetos","palavra":"isqueiro","dica":"fogo"},' +
+  '{"categoria":"objetos","palavra":"vela","dica":"chama"},' +
+  '{"categoria":"objetos","palavra":"pincel","dica":"pintar"},' +
+  '{"categoria":"objetos","palavra":"tinta","dica":"cor"},' +
+  '{"categoria":"objetos","palavra":"giz","dica":"quadro"},' +
+  '{"categoria":"objetos","palavra":"cinto","dica":"ajuste"},' +
+  '{"categoria":"objetos","palavra":"anel","dica":"dedo"},' +
+  '{"categoria":"objetos","palavra":"colar","dica":"pescoço"},' +
+  '{"categoria":"objetos","palavra":"brinco","dica":"orelha"},' +
+  '{"categoria":"objetos","palavra":"chave inglesa","dica":"ferramenta"},' +
+  '{"categoria":"objetos","palavra":"pregos","dica":"martelo"},' +
+  '{"categoria":"objetos","palavra":"lixa","dica":"alisar"},' +
+  '{"categoria":"objetos","palavra":"ralador","dica":"queijo"},' +
+  '{"categoria":"objetos","palavra":"frigideira","dica":"fritar"},' +
+  '{"categoria":"objetos","palavra":"escorredor","dica":"macarrão"},' +
+  '{"categoria":"objetos","palavra":"ferro de passar","dica":"roupa"},' +
+  '{"categoria":"objetos","palavra":"bateria","dica":"energia"},' +
+  '{"categoria":"objetos","palavra":"lampião","dica":"antigo"},' +
+  '{"categoria":"objetos","palavra":"sino","dica":"som"},' +
+  '{"categoria":"objetos","palavra":"caixa","dica":"guardar"},' +
+  '{"categoria":"objetos","palavra":"régua","dica":"medir"},' +
+  '{"categoria":"objetos","palavra":"compasso","dica":"círculo"},' +
+  '{"categoria":"objetos","palavra":"agulha","dica":"costura"},' +
+  '{"categoria":"objetos","palavra":"tecido","dica":"costura"},' +
+  '{"categoria":"objetos","palavra":"fósforo","dica":"fogo"},' +
+  '{"categoria":"objetos","palavra":"bússola","dica":"norte"},' +
+  '{"categoria":"objetos","palavra":"lanterna","dica":"escuro"},' +
+  '{"categoria":"objetos","palavra":"ralo","dica":"banheiro"},' +
+  '{"categoria":"objetos","palavra":"escova de cabelo","dica":"pente"},' +
+  '{"categoria":"objetos","palavra":"tábua de passar","dica":"roupas"},' +
+  '{"categoria":"objetos","palavra":"varal","dica":"roupas"},' +
+  '{"categoria":"objetos","palavra":"corda","dica":"amarrar"},' +
+  '{"categoria":"comida","palavra":"pizza","dica":"queijo"},' +
+  '{"categoria":"comida","palavra":"arroz","dica":"grãos"},' +
+  '{"categoria":"comida","palavra":"feijoada","dica":"feijão"},' +
+  '{"categoria":"comida","palavra":"sushi","dica":"peixe cru"},' +
+  '{"categoria":"comida","palavra":"hambúrguer","dica":"pão"},' +
+  '{"categoria":"comida","palavra":"brigadeiro","dica":"chocolate"},' +
+  '{"categoria":"comida","palavra":"lasanha","dica":"camadas"},' +
+  '{"categoria":"comida","palavra":"salada","dica":"verde"},' +
+  '{"categoria":"comida","palavra":"batata frita","dica":"crocrante"},' +
+  '{"categoria":"comida","palavra":"sorvete","dica":"gelado"},' +
+  '{"categoria":"comida","palavra":"bolo","dica":"aniversário"},' +
+  '{"categoria":"comida","palavra":"macarrão","dica":"massa"},' +
+  '{"categoria":"comida","palavra":"pão","dica":"forno"},' +
+  '{"categoria":"comida","palavra":"queijo","dica":"lácteo"},' +
+  '{"categoria":"comida","palavra":"ovo","dica":"proteína"},' +
+  '{"categoria":"comida","palavra":"tomate","dica":"vermelho"},' +
+  '{"categoria":"comida","palavra":"cebola","dica":"cheiro"},' +
+  '{"categoria":"comida","palavra":"alho","dica":"temperar"},' +
+  '{"categoria":"comida","palavra":"peixe","dica":"mar"},' +
+  '{"categoria":"comida","palavra":"frango","dica":"assado"},' +
+  '{"categoria":"comida","palavra":"churrasco","dica":"brasa"},' +
+  '{"categoria":"comida","palavra":"tapioca","dica":"beiju"},' +
+  '{"categoria":"comida","palavra":"acarajé","dica":"baiano"},' +
+  '{"categoria":"comida","palavra":"coxinha","dica":"croquette"},' +
+  '{"categoria":"comida","palavra":"pudim","dica":"caramelo"},' +
+  '{"categoria":"comida","palavra":"suco","dica":"fruta"},' +
+  '{"categoria":"comida","palavra":"café","dica":"cafeína"},' +
+  '{"categoria":"comida","palavra":"chá","dica":"infusão"},' +
+  '{"categoria":"comida","palavra":"manteiga","dica":"lácteo"},' +
+  '{"categoria":"comida","palavra":"ceviche","dica":"limão"},' +
+  '{"categoria":"personagens","palavra":"Sherlock Holmes","dica":"detetive"},' +
+  '{"categoria":"personagens","palavra":"Harry Potter","dica":"magia"},' +
+  '{"categoria":"personagens","palavra":"Mickey Mouse","dica":"orelhas"},' +
+  '{"categoria":"personagens","palavra":"Darth Vader","dica":"máscara"},' +
+  '{"categoria":"personagens","palavra":"Indiana Jones","dica":"chapéu"},' +
+  '{"categoria":"personagens","palavra":"James Bond","dica":"007"},' +
+  '{"categoria":"personagens","palavra":"Superman","dica":"capa"},' +
+  '{"categoria":"personagens","palavra":"Batman","dica":"mascara"},' +
+  '{"categoria":"personagens","palavra":"Wonder Woman","dica":"laço"},' +
+  '{"categoria":"personagens","palavra":"Goku","dica":"energia"},' +
+  '{"categoria":"personagens","palavra":"Naruto","dica":"ninja"},' +
+  '{"categoria":"personagens","palavra":"Mario","dica":"canos"},' +
+  '{"categoria":"personagens","palavra":"Lara Croft","dica":"arqueóloga"},' +
+  '{"categoria":"personagens","palavra":"Godzilla","dica":"monstro"},' +
+  '{"categoria":"personagens","palavra":"Pikachu","dica":"raio"},' +
+  '{"categoria":"personagens","palavra":"Homer Simpson","dica":"donuts"},' +
+  '{"categoria":"personagens","palavra":"Elsa","dica":"gelo"},' +
+  '{"categoria":"personagens","palavra":"Tony Stark","dica":"armadura"},' +
+  '{"categoria":"personagens","palavra":"Bruce Lee","dica":"karatê"},' +
+  '{"categoria":"personagens","palavra":"Beyoncé","dica":"cantora"},' +
+  '{"categoria":"personagens","palavra":"Elvis Presley","dica":"rock"},' +
+  '{"categoria":"personagens","palavra":"Michael Jackson","dica":"dança"},' +
+  '{"categoria":"personagens","palavra":"Ayrton Senna","dica":"piloto"},' +
+  '{"categoria":"personagens","palavra":"Pelé","dica":"gols"},' +
+  '{"categoria":"personagens","palavra":"Neymar","dica":"drible"},' +
+  '{"categoria":"personagens","palavra":"Frida Kahlo","dica":"pintura"},' +
+  '{"categoria":"personagens","palavra":"Pablo Picasso","dica":"arte"},' +
+  '{"categoria":"personagens","palavra":"Usain Bolt","dica":"velocidade"},' +
+  '{"categoria":"personagens","palavra":"Oprah Winfrey","dica":"talkshow"},' +
+  '{"categoria":"personagens","palavra":"Shera (He-Man)","dica":"princesa"},' +
+  '{"categoria":"personagens","palavra":"Homem-Aranha","dica":"teia"},' +
+  '{"categoria":"personagens","palavra":"Homem de Ferro","dica":"armadura"},' +
+  '{"categoria":"personagens","palavra":"Capitão América","dica":"escudo"},' +
+  '{"categoria":"personagens","palavra":"Thor","dica":"martelo"},' +
+  '{"categoria":"personagens","palavra":"Hulk","dica":"força"},' +
+  '{"categoria":"personagens","palavra":"Pantera Negra","dica":"realeza"},' +
+  '{"categoria":"personagens","palavra":"Thanos","dica":"luva"},' +
+  '{"categoria":"personagens","palavra":"Loki","dica":"truques"},' +
+  '{"categoria":"personagens","palavra":"Homem-Formiga","dica":"tamanho"},' +
+  '{"categoria":"personagens","palavra":"Flash","dica":"velocidade"},' +
+  '{"categoria":"personagens","palavra":"Coringa","dica":"caos"},' +
+  '{"categoria":"personagens","palavra":"Arlequina","dica":"martelo"},' +
+  '{"categoria":"personagens","palavra":"Mulher-Maravilha","dica":"laço"},' +
+  '{"categoria":"personagens","palavra":"Aquaman","dica":"tridente"},' +
+  '{"categoria":"personagens","palavra":"Super-Homem","dica":"voar"},' +
+  '{"categoria":"personagens","palavra":"Batman","dica":"gótica"},' +
+  '{"categoria":"personagens","palavra":"Pernalonga","dica":"cenoura"},' +
+  '{"categoria":"personagens","palavra":"Patolino","dica":"pato"},' +
+  '{"categoria":"personagens","palavra":"Scooby-Doo","dica":"mistério"},' +
+  '{"categoria":"personagens","palavra":"Salsicha","dica":"medroso"},' +
+  '{"categoria":"personagens","palavra":"Shrek","dica":"ogro"},' +
+  '{"categoria":"personagens","palavra":"Burro (Shrek)","dica":"falante"},' +
+  '{"categoria":"personagens","palavra":"Fiona","dica":"princesa"},' +
+  '{"categoria":"personagens","palavra":"Bob Esponja","dica":"abacaxi"},' +
+  '{"categoria":"personagens","palavra":"Patrick Estrela","dica":"mar"},' +
+  '{"categoria":"personagens","palavra":"Plankton","dica":"minúsculo"},' +
+  '{"categoria":"personagens","palavra":"Sonic","dica":"anéis"},' +
+  '{"categoria":"personagens","palavra":"Tails","dica":"voar"},' +
+  '{"categoria":"personagens","palavra":"Knuckles","dica":"punhos"},' +
+  '{"categoria":"personagens","palavra":"Kirby","dica":"sugar"},' +
+  '{"categoria":"personagens","palavra":"Donkey Kong","dica":"banana"},' +
+  '{"categoria":"personagens","palavra":"Yoshi","dica":"língua"},' +
+  '{"categoria":"personagens","palavra":"Luigi","dica":"verde"},' +
+  '{"categoria":"personagens","palavra":"Peach","dica":"princesa"},' +
+  '{"categoria":"personagens","palavra":"Bowser","dica":"casco"},' +
+  '{"categoria":"personagens","palavra":"Crash Bandicoot","dica":"máscara"},' +
+  '{"categoria":"personagens","palavra":"Lara Croft","dica":"exploradora"},' +
+  '{"categoria":"personagens","palavra":"Kratos","dica":"deus"},' +
+  '{"categoria":"personagens","palavra":"Geralt de Rívia","dica":"caçador"},' +
+  '{"categoria":"personagens","palavra":"Joel (The Last of Us)","dica":"fungo"},' +
+  '{"categoria":"personagens","palavra":"Ellie","dica":"coragem"},' +
+  '{"categoria":"personagens","palavra":"Mario","dica":"encanador"},' +
+  '{"categoria":"personagens","palavra":"Link","dica":"espada"},' +
+  '{"categoria":"personagens","palavra":"Zelda","dica":"reino"},' +
+  '{"categoria":"personagens","palavra":"Ash Ketchum","dica":"pokébola"},' +
+  '{"categoria":"personagens","palavra":"Pikachu","dica":"choque"},' +
+  '{"categoria":"personagens","palavra":"Mewtwo","dica":"psíquico"},' +
+  '{"categoria":"personagens","palavra":"Gandalf","dica":"mago"},' +
+  '{"categoria":"personagens","palavra":"Frodo","dica":"anel"},' +
+  '{"categoria":"personagens","palavra":"Legolas","dica":"arqueiro"},' +
+  '{"categoria":"personagens","palavra":"Dobby","dica":"elfo"},' +
+  '{"categoria":"personagens","palavra":"Voldemort","dica":"medo"},' +
+  '{"categoria":"personagens","palavra":"Hermione Granger","dica":"inteligente"},' +
+  '{"categoria":"personagens","palavra":"Rony Weasley","dica":"ruivo"},' +
+  '{"categoria":"personagens","palavra":"Severus Snape","dica":"poções"},' +
+  '{"categoria":"personagens","palavra":"Alvo Dumbledore","dica":"sabedoria"},' +
+  '{"categoria":"personagens","palavra":"Tony Stark","dica":"bilionário"},' +
+  '{"categoria":"personagens","palavra":"Doctor Strange","dica":"místico"},' +
+  '{"categoria":"personagens","palavra":"Deadpool","dica":"sarcasmo"},' +
+  '{"categoria":"personagens","palavra":"Venom","dica":"simbiote"},' +
+  '{"categoria":"personagens","palavra":"Megamente","dica":"azul"},' +
+  '{"categoria":"personagens","palavra":"Gru","dica":"minions"},' +
+  '{"categoria":"personagens","palavra":"Minions","dica":"banana"},' +
+  '{"categoria":"personagens","palavra":"Jack Sparrow","dica":"pirata"},' +
+  '{"categoria":"personagens","palavra":"Davy Jones","dica":"tentáculos"},' +
+  '{"categoria":"personagens","palavra":"Jack Skellington","dica":"Halloween"},' +
+  '{"categoria":"personagens","palavra":"Elsa","dica":"gelo"},' +
+  '{"categoria":"personagens","palavra":"Anna","dica":"irmã"},' +
+  '{"categoria":"personagens","palavra":"Olaf","dica":"neve"},' +
+  '{"categoria":"personagens","palavra":"Ralph","dica":"quebra"},' +
+  '{"categoria":"personagens","palavra":"Vanellope","dica":"corrida"},' +
+  '{"categoria":"personagens","palavra":"Baymax","dica":"inflável"},' +
+  '{"categoria":"personagens","palavra":"Woody","dica":"xerife"},' +
+  '{"categoria":"personagens","palavra":"Buzz Lightyear","dica":"infinito"},' +
+  '{"categoria":"personagens","palavra":"Wall-E","dica":"lixo"},' +
+  '{"categoria":"personagens","palavra":"Eva (Wall-E)","dica":"robô"},' +
+  '{"categoria":"personagens","palavra":"Sulley","dica":"monstro"},' +
+  '{"categoria":"personagens","palavra":"Mike Wazowski","dica":"olho"},' +
+  '{"categoria":"personagens","palavra":"Nemo","dica":"peixe"},' +
+  '{"categoria":"personagens","palavra":"Dory","dica":"memória"},' +
+  '{"categoria":"personagens","palavra":"Remy (Ratatouille)","dica":"rato"},' +
+  '{"categoria":"personagens","palavra":"Lightning McQueen","dica":"velocidade"},' +
+  '{"categoria":"personagens","palavra":"Mate","dica":"guincho"},' +
+  '{"categoria":"personagens","palavra":"Simba","dica":"leão"},' +
+  '{"categoria":"personagens","palavra":"Timon","dica":"suricato"},' +
+  '{"categoria":"personagens","palavra":"Pumba","dica":"javali"},' +
+  '{"categoria":"personagens","palavra":"Mufasa","dica":"rei"},' +
+  '{"categoria":"personagens","palavra":"Scar","dica":"vilão"},' +
+  '{"categoria":"atores","palavra":"Leonardo DiCaprio","dica":"Titanic"},' +
+  '{"categoria":"atores","palavra":"Brad Pitt","dica":"Clube"},' +
+  '{"categoria":"atores","palavra":"Johnny Depp","dica":"Pirata"},' +
+  '{"categoria":"atores","palavra":"Tom Cruise","dica":"Missão"},' +
+  '{"categoria":"atores","palavra":"Robert Downey Jr.","dica":"Ferro"},' +
+  '{"categoria":"atores","palavra":"Chris Hemsworth","dica":"Martelo"},' +
+  '{"categoria":"atores","palavra":"Dwayne Johnson","dica":"Rocha"},' +
+  '{"categoria":"atores","palavra":"Keanu Reeves","dica":"Matrix"},' +
+  '{"categoria":"atores","palavra":"Ryan Reynolds","dica":"Deadpool"},' +
+  '{"categoria":"atores","palavra":"Will Smith","dica":"Tapa"},' +
+  '{"categoria":"atores","palavra":"Tom Hanks","dica":"Caixa"},' +
+  '{"categoria":"atores","palavra":"Morgan Freeman","dica":"Narrador"},' +
+  '{"categoria":"atores","palavra":"Hugh Jackman","dica":"Garras"},' +
+  '{"categoria":"atores","palavra":"Chris Evans","dica":"Escudo"},' +
+  '{"categoria":"atores","palavra":"Jason Momoa","dica":"Tridente"},' +
+  '{"categoria":"atores","palavra":"Christian Bale","dica":"Batman"},' +
+  '{"categoria":"atores","palavra":"Samuel L. Jackson","dica":"Olho"},' +
+  '{"categoria":"atores","palavra":"Adam Sandler","dica":"Comédia"},' +
+  '{"categoria":"atores","palavra":"Jim Carrey","dica":"Máscara"},' +
+  '{"categoria":"atores","palavra":"Matt Damon","dica":"Espião"},' +
+  '{"categoria":"atores","palavra":"Ryan Gosling","dica":"Barbie"},' +
+  '{"categoria":"atores","palavra":"Joaquin Phoenix","dica":"Coringa"},' +
+  '{"categoria":"atores","palavra":"Benedict Cumberbatch","dica":"Mago"},' +
+  '{"categoria":"atores","palavra":"Vin Diesel","dica":"Família"},' +
+  '{"categoria":"atores","palavra":"Mark Ruffalo","dica":"Verde"},' +
+  '{"categoria":"atores","palavra":"Harrison Ford","dica":"Chicote"},' +
+  '{"categoria":"atores","palavra":"Sylvester Stallone","dica":"Boxe"},' +
+  '{"categoria":"atores","palavra":"Arnold Schwarzenegger","dica":"Exterminador"},' +
+  '{"categoria":"atores","palavra":"George Clooney","dica":"Café"},' +
+  '{"categoria":"atores","palavra":"Bruce Willis","dica":"Natal"},' +
+  '{"categoria":"atores","palavra":"Scarlett Johansson","dica":"Viúva"},' +
+  '{"categoria":"atores","palavra":"Angelina Jolie","dica":"Tomb"},' +
+  '{"categoria":"atores","palavra":"Jennifer Lawrence","dica":"Arco"},' +
+  '{"categoria":"atores","palavra":"Emma Watson","dica":"Feitiço"},' +
+  '{"categoria":"atores","palavra":"Emma Stone","dica":"La La"},' +
+  '{"categoria":"atores","palavra":"Natalie Portman","dica":"Cisne"},' +
+  '{"categoria":"atores","palavra":"Gal Gadot","dica":"Mulher"},' +
+  '{"categoria":"atores","palavra":"Margot Robbie","dica":"Boneca"},' +
+  '{"categoria":"atores","palavra":"Zendaya","dica":"Euforia"},' +
+  '{"categoria":"atores","palavra":"Anne Hathaway","dica":"Diário"},' +
+  '{"categoria":"atores","palavra":"Meryl Streep","dica":"Prada"},' +
+  '{"categoria":"atores","palavra":"Julia Roberts","dica":"Sorriso"},' +
+  '{"categoria":"atores","palavra":"Cillian Murphy","dica":"Explosão"},' +
+  '{"categoria":"atores","palavra":"Pedro Pascal","dica":"Mandaloriano"},' +
+  '{"categoria":"atores","palavra":"Wagner Moura","dica":"Capitão"},' +
+  '{"categoria":"atores","palavra":"Rodrigo Santoro","dica":"300"},' +
+  '{"categoria":"atores","palavra":"Selton Mello","dica":"Auto"},' +
+  '{"categoria":"atores","palavra":"Lázaro Ramos","dica":"Carismático"},' +
+  '{"categoria":"atores","palavra":"Fernanda Montenegro","dica":"Central"},' +
+  '{"categoria":"atores","palavra":"Taís Araújo","dica":"Atriz"},' +
+  '{"categoria":"atores","palavra":"Paolla Oliveira","dica":"Dançarina"},' +
+  '{"categoria":"atores","palavra":"Giovanna Antonelli","dica":"Clone"},' +
+  '{"categoria":"atores","palavra":"Tony Ramos","dica":"Veterano"},' +
+  '{"categoria":"atores","palavra":"Gloria Pires","dica":"Mulher"},' +
+  '{"categoria":"atores","palavra":"Cauã Reymond","dica":"Galã"},' +
+  '{"categoria":"atores","palavra":"Marina Ruy Barbosa","dica":"Ruiva"},' +
+  '{"categoria":"cantores","palavra":"Michael Jackson","dica":"Luva"},' +
+  '{"categoria":"cantores","palavra":"Elvis Presley","dica":"Pelvis"},' +
+  '{"categoria":"cantores","palavra":"Madonna","dica":"Rainha"},' +
+  '{"categoria":"cantores","palavra":"Whitney Houston","dica":"Voz"},' +
+  '{"categoria":"cantores","palavra":"Prince","dica":"Roxo"},' +
+  '{"categoria":"cantores","palavra":"Freddie Mercury","dica":"Queen"},' +
+  '{"categoria":"cantores","palavra":"David Bowie","dica":"Ziggy"},' +
+  '{"categoria":"cantores","palavra":"Elton John","dica":"Piano"},' +
+  '{"categoria":"cantores","palavra":"George Michael","dica":"Faith"},' +
+  '{"categoria":"cantores","palavra":"Tina Turner","dica":"Energia"},' +
+  '{"categoria":"cantores","palavra":"Celine Dion","dica":"Titanic"},' +
+  '{"categoria":"cantores","palavra":"Mariah Carey","dica":"Natal"},' +
+  '{"categoria":"cantores","palavra":"Britney Spears","dica":"Oops"},' +
+  '{"categoria":"cantores","palavra":"Christina Aguilera","dica":"Genie"},' +
+  '{"categoria":"cantores","palavra":"Justin Timberlake","dica":"N Sync"},' +
+  '{"categoria":"cantores","palavra":"Beyoncé","dica":"Formiga"},' +
+  '{"categoria":"cantores","palavra":"Rihanna","dica":"Umbrella"},' +
+  '{"categoria":"cantores","palavra":"Usher","dica":"Yeah"},' +
+  '{"categoria":"cantores","palavra":"Eminem","dica":"Rapido"},' +
+  '{"categoria":"cantores","palavra":"Kanye West","dica":"Polêmico"},' +
+  '{"categoria":"cantores","palavra":"Jay-Z","dica":"Empire"},' +
+  '{"categoria":"cantores","palavra":"Alicia Keys","dica":"Piano"},' +
+  '{"categoria":"cantores","palavra":"Shakira","dica":"Quadril"},' +
+  '{"categoria":"cantores","palavra":"Enrique Iglesias","dica":"Herói"},' +
+  '{"categoria":"cantores","palavra":"Adele","dica":"Hello"},' +
+  '{"categoria":"cantores","palavra":"Bruno Mars","dica":"Grenade"},' +
+  '{"categoria":"cantores","palavra":"Katy Perry","dica":"Fogo"},' +
+  '{"categoria":"cantores","palavra":"Lady Gaga","dica":"Poker"},' +
+  '{"categoria":"cantores","palavra":"Taylor Swift","dica":"Coração"},' +
+  '{"categoria":"cantores","palavra":"Coldplay","dica":"Yellow"},' +
+  '{"categoria":"cantores","palavra":"Linkin Park","dica":"Hybrid"},' +
+  '{"categoria":"cantores","palavra":"Green Day","dica":"Boulevard"},' +
+  '{"categoria":"cantores","palavra":"Bon Jovi","dica":"Viva"},' +
+  '{"categoria":"cantores","palavra":"U2","dica":"Vertigo"},' +
+  '{"categoria":"cantores","palavra":"The Beatles","dica":"Submarino"},' +
+  '{"categoria":"cantores","palavra":"Rolling Stones","dica":"Satisfação"},' +
+  '{"categoria":"cantores","palavra":"Queen","dica":"Campeões"},' +
+  '{"categoria":"cantores","palavra":"Nirvana","dica":"Grunge"},' +
+  '{"categoria":"cantores","palavra":"Red Hot Chili Peppers","dica":"Californication"},' +
+  '{"categoria":"cantores","palavra":"Metallica","dica":"Enter"},' +
+  '{"categoria":"cantores","palavra":"AC/DC","dica":"Trovão"},' +
+  '{"categoria":"cantores","palavra":"Guns N'' Roses","dica":"Axl"},' +
+  '{"categoria":"cantores","palavra":"Aerosmith","dica":"Sonho"},' +
+  '{"categoria":"cantores","palavra":"Bob Marley","dica":"Reggae"},' +
+  '{"categoria":"cantores","palavra":"Phil Collins","dica":"Tarzan"},' +
+  '{"categoria":"cantores","palavra":"Lionel Richie","dica":"Hello"},' +
+  '{"categoria":"cantores","palavra":"Backstreet Boys","dica":"As Long"},' +
+  '{"categoria":"cantores","palavra":"NSYNC","dica":"Bye Bye"},' +
+  '{"categoria":"cantores","palavra":"Spice Girls","dica":"Girl Power"},' +
+  '{"categoria":"cantores","palavra":"Pink","dica":"So What"},' +
+  '{"categoria":"cantores","palavra":"Avril Lavigne","dica":"Sk8er"},' +
+  '{"categoria":"cantores","palavra":"Amy Winehouse","dica":"Rehab"},' +
+  '{"categoria":"cantores","palavra":"Bono","dica":"Óculos"},' +
+  '{"categoria":"cantores","palavra":"Andrea Bocelli","dica":"Tenor"},' +
+  '{"categoria":"cantores","palavra":"Norah Jones","dica":"Sunrise"},' +
+  '{"categoria":"cantores","palavra":"John Mayer","dica":"Gravity"},' +
+  '{"categoria":"cantores","palavra":"Norah Jones","dica":"Jazz"},' +
+  '{"categoria":"cantores","palavra":"Pitbull","dica":"Worldwide"},' +
+  '{"categoria":"cantores","palavra":"Mariah Carey","dica":"Agudo"},' +
+  '{"categoria":"cantores","palavra":"Akon","dica":"Locked"},' +
+  '{"categoria":"cantores","palavra":"Sean Paul","dica":"Temperature"},' +
+  '{"categoria":"cantores","palavra":"Fergie","dica":"London"},' +
+  '{"categoria":"cantores","palavra":"Black Eyed Peas","dica":"Boom"},' +
+  '{"categoria":"cantores","palavra":"Nelly Furtado","dica":"Promiscuous"},' +
+  '{"categoria":"cantores","palavra":"Kelly Clarkson","dica":"Breakaway"},' +
+  '{"categoria":"cantores","palavra":"Jason Mraz","dica":"Lucky"},' +
+  '{"categoria":"cantores","palavra":"Train","dica":"Soul Sister"},' +
+  '{"categoria":"cantores","palavra":"The Killers","dica":"Mr. Brightside"},' +
+  '{"categoria":"cantores","palavra":"Kings of Leon","dica":"Fire"},' +
+  '{"categoria":"cantores","palavra":"Foo Fighters","dica":"Everlong"},' +
+  '{"categoria":"cantores","palavra":"Oasis","dica":"Wonderwall"},' +
+  '{"categoria":"cantores","palavra":"Green Day","dica":"September"},' +
+  '{"categoria":"cantores","palavra":"Simple Plan","dica":"Perfect"},' +
+  '{"categoria":"cantores","palavra":"Evanescence","dica":"Wake"},' +
+  '{"categoria":"cantores","palavra":"Maroon 5","dica":"Sugar"},' +
+  '{"categoria":"cantores","palavra":"The Black Eyed Peas","dica":"Tonight"},' +
+  '{"categoria":"cantores","palavra":"Kesha","dica":"Tik Tok"},' +
+  '{"categoria":"cantores","palavra":"LMFAO","dica":"Party"},' +
+  '{"categoria":"cantores","palavra":"50 Cent","dica":"Candy"},' +
+  '{"categoria":"cantores","palavra":"Snoop Dogg","dica":"Fo Shizzle"},' +
+  '{"categoria":"cantores","palavra":"Dr. Dre","dica":"Beats"},' +
+  '{"categoria":"cantores","palavra":"Alicia Keys","dica":"Empire"},' +
+  '{"categoria":"cantores","palavra":"Justin Bieber","dica":"Baby"},' +
+  '{"categoria":"cantores","palavra":"Rihanna","dica":"Diamonds"},' +
+  '{"categoria":"cantores","palavra":"Beyoncé","dica":"Single"},' +
+  '{"categoria":"cantores","palavra":"Shakira","dica":"Waka"},' +
+  '{"categoria":"cantores","palavra":"Katy Perry","dica":"California"},' +
+  '{"categoria":"cantores","palavra":"Lady Gaga","dica":"Alejandro"}' +
+  ']' ;
+
+
+
+implementation
+
+end.

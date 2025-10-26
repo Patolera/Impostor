@@ -1,0 +1,9 @@
+unit UnJSON;
+
+interface
+
+const JSONArquivo = '';
+
+implementation
+
+end.

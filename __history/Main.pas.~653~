@@ -1,0 +1,1321 @@
+unit Main;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.TabControl,
+  FMX.StdCtrls, FMX.Controls.Presentation, FMX.Edit, FMX.EditBox, FMX.SpinBox,
+  FMX.Layouts, FMX.Effects, FMX.Filter.Effects, FMX.ListView.Types,
+  FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,System.Generics.Collections,
+  FMX.Ani,FMX.Objects,System.JSON, unJSON,System.Math,
+  System.IOUtils,System.IniFiles;
+
+  type
+  TJogador = record
+    ID: Integer;
+    Nome: string;
+    IsImpostor: Boolean;
+    Palavra: string;
+    Pontos: integer;
+  end;
+
+  type
+  TPalavra = record
+    Categoria: string;
+    Palavra: string;
+    Dica: string;
+  end;
+
+type
+  TfrmImpostor = class(TForm)
+    tab: TTabControl;
+    tbMain: TTabItem;
+    tbNomes: TTabItem;
+    vertNomes: TVertScrollBox;
+    Layout2: TLayout;
+    Label1: TLabel;
+    Layout3: TLayout;
+    tbJogo: TTabItem;
+    tbRegras: TTabItem;
+    vertPlayers: TVertScrollBox;
+    tbVerCondicao: TTabItem;
+    Layout5: TLayout;
+    Layout6: TLayout;
+    Label2: TLabel;
+    lblRegrasTema: TLabel;
+    Layout7: TLayout;
+    Label4: TLabel;
+    lblRegrasPlayerInicial: TLabel;
+    Layout8: TLayout;
+    recFrontResposta: TRectangle;
+    lblRegrasImpostorFront: TLabel;
+    Label7: TLabel;
+    recBackResposta: TRectangle;
+    lblRegrasImpostorBack: TLabel;
+    Layout10: TLayout;
+    lblCondicaoNomePlayer: TLabel;
+    Layout11: TLayout;
+    recBackPlayer: TRectangle;
+    lblBackPlayer: TLabel;
+    recFrontPlayer: TRectangle;
+    Label12: TLabel;
+    ShadowEffect2: TShadowEffect;
+    ShadowEffect4: TShadowEffect;
+    ShadowEffect6: TShadowEffect;
+    ShadowEffect8: TShadowEffect;
+    ShadowEffect9: TShadowEffect;
+    ShadowEffect11: TShadowEffect;
+    lytLogo: TLayout;
+    imgLogo: TImage;
+    lytBotao: TLayout;
+    recBotao: TRectangle;
+    lbBotao: TLabel;
+    shadowBotao: TShadowEffect;
+    lytMsg: TLayout;
+    recModal: TRectangle;
+    ShadowEffect3: TShadowEffect;
+    lytIntModal: TLayout;
+    lytModal: TLayout;
+    btnYes: TRectangle;
+    Label3: TLabel;
+    btnNo: TRectangle;
+    Label5: TLabel;
+    ShadowEffect14: TShadowEffect;
+    lblQuestion: TLabel;
+    recBackground: TRectangle;
+    lytGame: TLayout;
+    lytInstrucoes: TLayout;
+    recBackInstrucoes: TRectangle;
+    AniBackInstrucoes: TFloatAnimation;
+    lytRecInstrucoes: TLayout;
+    recInstrucoes: TRectangle;
+    lytNaoMostrarInstr: TLayout;
+    chkNaoMostrarInstr: TCheckBox;
+    Layout9: TLayout;
+    Rectangle3: TRectangle;
+    Label6: TLabel;
+    ShadowEffect7: TShadowEffect;
+    ShadowEffect5: TShadowEffect;
+    vertInstrucoes: TVertScrollBox;
+    Label8: TLabel;
+    AniInstrucoes: TFloatAnimation;
+    BlurMsg: TBlurEffect;
+    AniMsg: TFloatAnimation;
+    AniBackMsg: TFloatAnimation;
+    Balao: TCalloutRectangle;
+    lblBalao: TLabel;
+    AniBalao: TFloatAnimation;
+    ShadowEffect1: TShadowEffect;
+    ShadowEffect12: TShadowEffect;
+    lytMain: TLayout;
+    Timer: TTimer;
+    circleAni: TCircle;
+    AniCircleHeight: TFloatAnimation;
+    AniCircleWidth: TFloatAnimation;
+    AniCircleOpacity: TFloatAnimation;
+    vertMain: TVertScrollBox;
+    lytImpostor: TLayout;
+    spnImpostor: TSpinBox;
+    lblImpostor: TLabel;
+    lytOpcoesDeJogo: TLayout;
+    lytVerTema: TLayout;
+    lbVerTema: TLabel;
+    recVerTema: TRectangle;
+    circleVerTema: TCircle;
+    lytDicas: TLayout;
+    lblDicas: TLabel;
+    recDicas: TRectangle;
+    circleDicas: TCircle;
+    lytPontos: TLayout;
+    lblPontos: TLabel;
+    recPontos: TRectangle;
+    circlePontos: TCircle;
+    lytPlayers: TLayout;
+    spnJogadores: TSpinBox;
+    lblJogadores: TLabel;
+    lytTemas: TLayout;
+    lblTemas: TLabel;
+    lytTemas1: TLayout;
+    lytTemasFilmes: TLayout;
+    lblTemasFilmes: TLabel;
+    recTemasFilmes: TRectangle;
+    circleTemasFilmes: TCircle;
+    lytTemasMarcas: TLayout;
+    lblTemasMarcas: TLabel;
+    recTemasMarcas: TRectangle;
+    circleTemasMarcas: TCircle;
+    lytTemas4: TLayout;
+    lytTemasAtores: TLayout;
+    lblTemasAtores: TLabel;
+    recTemasAtores: TRectangle;
+    circleTemasAtores: TCircle;
+    lytTemasCantores: TLayout;
+    lblTemasCantores: TLabel;
+    recTemasCantores: TRectangle;
+    circleTemasCantores: TCircle;
+    lytTemas3: TLayout;
+    lytTemasComida: TLayout;
+    lblTemasComida: TLabel;
+    recTemasComida: TRectangle;
+    circleTemasComida: TCircle;
+    lytTemasPersonagens: TLayout;
+    lblTemasPersonagens: TLabel;
+    recTemasPersonagens: TRectangle;
+    circleTemasPersonagens: TCircle;
+    lytTemas2: TLayout;
+    lytTemasAnimais: TLayout;
+    lblTemasAnimais: TLabel;
+    recTemasAnimais: TRectangle;
+    circleTemasAnimais: TCircle;
+    lytTemasObjetos: TLayout;
+    lblTemasObjetos: TLabel;
+    recTemasObjetos: TRectangle;
+    circleTemasObjetos: TCircle;
+    lytQtePontos: TLayout;
+    lblQtePontos: TLabel;
+    spnQtePontos: TSpinBox;
+    AniQtePontos: TFloatAnimation;
+    tbPontos: TTabItem;
+    vertPontos: TVertScrollBox;
+    Layout1: TLayout;
+    Label9: TLabel;
+    ShadowEffect10: TShadowEffect;
+    tbVencedor: TTabItem;
+    Label10: TLabel;
+    lblVencedor: TLabel;
+    AniVencedor: TFloatAnimation;
+    Layout4: TLayout;
+    Label11: TLabel;
+    ShadowEffect13: TShadowEffect;
+    AniVencedorGira: TFloatAnimation;
+    ShadowEffect15: TShadowEffect;
+    procedure spnJogadoresChange(Sender: TObject);
+    procedure tabResized(Sender: TObject);
+    procedure tabChange(Sender: TObject);
+    procedure recBotaoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure recFrontPlayerDblClick(Sender: TObject);
+    procedure Rectangle3Click(Sender: TObject);
+    procedure imgLogoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure AniBackInstrucoesFinish(Sender: TObject);
+    procedure AniInstrucoesFinish(Sender: TObject);
+    procedure AniBackMsgFinish(Sender: TObject);
+    procedure AniMsgFinish(Sender: TObject);
+    procedure recTemasFilmesClick(Sender: TObject);
+    procedure recTemasMarcasClick(Sender: TObject);
+    procedure recTemasAnimaisClick(Sender: TObject);
+    procedure recTemasObjetosClick(Sender: TObject);
+    procedure recTemasComidaClick(Sender: TObject);
+    procedure recTemasPersonagensClick(Sender: TObject);
+    procedure recTemasAtoresClick(Sender: TObject);
+    procedure recTemasCantoresClick(Sender: TObject);
+    procedure recVerTemaClick(Sender: TObject);
+    procedure recDicasClick(Sender: TObject);
+    procedure recFrontRespostaDblClick(Sender: TObject);
+    procedure TimerTimer(Sender: TObject);
+    procedure AniCircleWidthFinish(Sender: TObject);
+    procedure AniCircleOpacityFinish(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure recPontosClick(Sender: TObject);
+    procedure AniQtePontosFinish(Sender: TObject);
+    procedure AniVencedorProcess(Sender: TObject);
+
+  private
+    { Private declarations }
+    FModalCallback: TProc<Boolean>;
+    procedure ColocarNomes;
+    procedure ComecaJogo;
+    procedure PlayerClick(Sender: TObject);
+    procedure TestaSeTodosJaViram;
+    procedure ResetGame;
+    procedure Randomiza;
+    procedure MontaTelaRegras;
+    procedure MontaTelaPlayer(ID:integer);
+    procedure CarregarPalavrasDoJSON(const JSONStr: string);
+    procedure ShowModalConfirm(const Question: string; OnResult: TProc<Boolean>);
+    procedure btnYesClick(Sender: TObject);
+    procedure btnNoClick(Sender: TObject);
+    procedure AnimFadeFinish(Sender: TObject);
+    procedure FadeTroca(FrontRect, BackRect: TRectangle);
+    procedure StartHeartbeat(Control: TImage);
+    procedure StopHeartbeat(Control: TControl);
+    procedure HeartbeatProcessX(Sender: TObject);
+    procedure HeartbeatProcessY(Sender: TObject);
+    procedure SalvarStatus;
+    procedure LerStatus;
+    function GetIniFileName: string;
+    procedure CheckSwitchsTemas;
+    procedure Switch(rect:TRectangle;  circle:TCircle);
+    procedure AnimaFundoImpostor;
+    procedure MontaTelaPontos;
+    procedure CalculaPontos(Sender: TObject);
+    procedure ZeraPontos;
+    procedure ChecaGanhador;
+    procedure AnimaCircle;
+
+  public
+    { Public declarations }
+  end;
+
+
+
+  var
+    Jogadores: TArray<TJogador>;
+    Edits: TList<TEdit>;
+    Flows: TList<TRectangle>;
+    LayoutPontos: TList<TLayout>;
+    holding: Boolean = False;
+    holdProgress: Single = 0;
+    CurrentFront, CurrentBack: TRectangle;
+    holdTimer: TTimer;
+    TemaEscolhido: string;
+    JogadorInicial: string;
+    ListaPalavras: TArray<TPalavra>;
+    recModal: TRectangle;
+    lblQuestion: TLabel;
+    btnYes, btnNo: TSpeedButton;
+    AnimHeartX, AnimHeartY: TFloatAnimation;
+    HeartbeatTarget: TImage;
+    HeartbeatOrigX, HeartbeatOrigY: Single;
+    InstrucoesCliked: Boolean;
+    MaxSize : single;
+    contGira: integer;
+
+  const sMsgPontos = '1 Ponto para quem acertou o impostor' + sLineBreak +
+                     '3 Pontos para o impostor se ele não foi descoberto' + sLineBreak +
+                     'Acaba quando alguem fizer || pontos';
+
+var
+  frmImpostor: TfrmImpostor;
+
+implementation
+
+{$R *.fmx}
+
+function TfrmImpostor.GetIniFileName: string;
+begin
+  Result := TPath.Combine(TPath.GetDocumentsPath, 'config.ini');
+end;
+
+procedure TfrmImpostor.SalvarStatus;
+var
+  Ini: TMemIniFile;
+begin
+  Ini := TMemIniFile.Create(GetIniFileName);
+  try
+    Ini.WriteBool('Config', 'NaoMostrarInstr', chkNaoMostrarInstr.IsChecked);
+    Ini.UpdateFile;
+  finally
+    Ini.Free;
+  end;
+end;
+
+
+procedure TfrmImpostor.LerStatus;
+var
+  Ini: TMemIniFile;
+begin
+  if not TFile.Exists(GetIniFileName) then
+    Exit;
+
+  Ini := TMemIniFile.Create(GetIniFileName);
+  try
+    chkNaoMostrarInstr.IsChecked := Ini.ReadBool('Config', 'NaoMostrarInstr', False);
+  finally
+    Ini.Free;
+  end;
+end;
+
+procedure TfrmImpostor.Randomiza;
+var
+  TemasAtivos: TArray<string>;
+  i, idx, count: Integer;
+  Indices: TList<Integer>;
+  msg:string;
+  PalavraEscolhida: TPalavra;
+  Temp: TArray<TPalavra>;
+  PalavrasFiltradas: TArray<TPalavra>;
+begin
+  TemasAtivos := [];
+
+  if recTemasFilmes.Tag = 1 then
+    TemasAtivos := TemasAtivos + ['Filmes'];
+  if recTemasMarcas.Tag = 1 then
+    TemasAtivos := TemasAtivos + ['Marcas'];
+  if recTemasAnimais.Tag = 1 then
+    TemasAtivos := TemasAtivos + ['Animais'];
+  if recTemasObjetos.Tag = 1 then
+    TemasAtivos := TemasAtivos + ['Objetos'];
+  if recTemasComida.Tag = 1 then
+    TemasAtivos := TemasAtivos + ['Comida'];
+  if recTemasPersonagens.Tag = 1 then
+    TemasAtivos := TemasAtivos + ['Personagens'];
+  if recTemasAtores.Tag = 1 then
+    TemasAtivos := TemasAtivos + ['Atores'];
+  if recTemasCantores.Tag = 1 then
+    TemasAtivos := TemasAtivos + ['Cantores'];
+
+  TemaEscolhido  := TemasAtivos[Random(Length(TemasAtivos))];
+
+  JogadorInicial := Jogadores[Random(Length(Jogadores))].Nome;
+
+  //escolhendo impostores
+  for i := 0 to High(Jogadores) do
+    Jogadores[i].IsImpostor := False;
+
+  Indices := TList<Integer>.Create;
+  try
+    for i := 0 to High(Jogadores) do
+      Indices.Add(i);
+
+    for i := Indices.Count - 1 downto 1 do
+      Indices.Exchange(i, Random(i+1));
+
+    for i := 0 to Trunc(spnImpostor.Value) - 1 do
+      Jogadores[Indices[i]].IsImpostor := True;
+
+  finally
+    Indices.Free;
+  end;
+
+  //filtrando o json de temas
+  SetLength(PalavrasFiltradas, 0);
+  for i := 0 to High(ListaPalavras) do
+    if ListaPalavras[i].Categoria.ToUpper = TemaEscolhido.ToUpper then
+    begin
+      SetLength(PalavrasFiltradas, Length(PalavrasFiltradas) + 1);
+      PalavrasFiltradas[High(PalavrasFiltradas)] := ListaPalavras[i];
+    end;
+
+  if Length(PalavrasFiltradas) > 0 then
+    PalavraEscolhida := PalavrasFiltradas[Random(Length(PalavrasFiltradas))];
+
+  for i := 0 to High(Jogadores) do
+  begin
+    if (Jogadores[i].IsImpostor) then
+    begin
+      if (recDicas.Tag = 1) then
+        Jogadores[i].Palavra := PalavraEscolhida.Dica;
+    end
+    else
+      Jogadores[i].Palavra := PalavraEscolhida.Palavra;
+  end;
+
+end;
+
+procedure TfrmImpostor.CarregarPalavrasDoJSON(const JSONStr: string);
+var
+  JSONArray: TJSONArray;
+  JSONObject: TJSONObject;
+  i: Integer;
+  PalavraRec: TPalavra;
+begin
+  JSONArray := TJSONObject.ParseJSONValue(JSONStr) as TJSONArray;
+  if JSONArray = nil then
+    Exit;
+
+  try
+    SetLength(ListaPalavras, JSONArray.Count);
+    for i := 0 to JSONArray.Count - 1 do
+    begin
+      JSONObject := JSONArray.Items[i] as TJSONObject;
+
+      PalavraRec.Categoria := JSONObject.GetValue('categoria').Value;
+      PalavraRec.Palavra   := JSONObject.GetValue('palavra').Value;
+      PalavraRec.Dica      := JSONObject.GetValue('dica').Value;
+
+      ListaPalavras[i] := PalavraRec;
+    end;
+  finally
+    JSONArray.Free;
+  end;
+end;
+
+procedure TfrmImpostor.spnJogadoresChange(Sender: TObject);
+begin
+  spnImpostor.Max := Trunc(spnJogadores.Text.ToInteger / 3);
+end;
+
+procedure TfrmImpostor.tabChange(Sender: TObject);
+begin
+  lbBotao.Text := 'Começar';
+  lytBotao.Visible := True;
+  Balao.Visible := False;
+  AniBalao.Stop;
+
+  if tab.ActiveTab = tbNomes then
+  begin
+    ColocarNomes;
+  end
+  else if tab.ActiveTab = tbJogo then
+  begin
+    lbBotao.Text := 'Voltar';
+    TestaSeTodosJaViram;
+  end
+  else if tab.ActiveTab = tbRegras then
+  begin
+    Layout6.Visible := recVerTema.Tag = 1;
+    lbBotao.Text := 'Jogar de novo';
+    if recPontos.Tag = 1 then
+      lbBotao.Text := 'Pontos';
+    MontaTelaRegras;
+  end
+  else if tab.ActiveTab = tbVerCondicao then
+  begin
+    lbBotao.Text := 'Voltar';
+    recFrontPlayer.Visible := True;
+    recBackPlayer.Visible  := False;
+    recFrontPlayer.Opacity := 1;
+    recBackPlayer.Opacity  := 0;
+  end
+  else if tab.ActiveTab = tbMain then
+  begin
+    Balao.Visible := True;
+    AniBalao.Start;
+  end
+  else if tab.ActiveTab = tbPontos then
+  begin
+    lbBotao.Text := 'Jogar de novo';
+    MontaTelaPontos;
+  end
+  else if tab.ActiveTab = tbVencedor then
+  begin
+    lbBotao.Text := 'Jogar de novo';
+  end;
+end;
+
+procedure TfrmImpostor.MontaTelaPontos;
+var
+  i     : integer;
+  Layout: TLayout;
+  Nome  : TLabel;
+  Spin  : TSpinBox;
+  Sombra: TShadowEffect;
+begin
+  Label11.Text := sMsgPontos;
+  Label11.Text := StringReplace(Label11.Text, '||', spnQtePontos.Value.ToString, [rfReplaceAll]);
+
+  if Assigned(LayoutPontos) then
+  begin
+    for Layout in LayoutPontos do
+      Layout.DisposeOf;
+    LayoutPontos.Clear;
+  end
+  else
+    LayoutPontos := TList<TLayout>.Create;
+
+  for i := 0 to High(Jogadores) do
+  begin
+    Layout := TLayout.Create(Self);
+    Layout.Parent := vertPontos;
+    Layout.Height := 45;
+    Layout.Align:= TAlignLayout.Top;
+    LayoutPontos.Add(Layout);
+
+    Nome := TLabel.Create(Layout);
+    Nome.Parent:= Layout;
+    Nome.Text := Jogadores[i].Nome;
+    Nome.Align:= TAlignLayout.Client;
+    Nome.TextSettings.Font.Size := 20;
+    Nome.TextSettings.Font.Style := [TFontStyle.fsBold];
+    Nome.TextSettings.FontColor := TAlphaColors.White;
+    Nome.TextSettings.HorzAlign := TTextAlign.Leading;
+    Nome.TextSettings.VertAlign := TTextAlign.Center;
+    Nome.StyledSettings := [];
+    Nome.HitTest := False;
+
+    Sombra := TShadowEffect.Create(Layout);
+    Sombra.Parent := Layout;
+    Sombra.Opacity := 0.3;
+    Sombra.Distance := 6;
+    Sombra.Direction := 90;
+    Sombra.Softness := 0.4;
+
+    Spin := TSpinBox.Create(Layout);
+    Spin.Parent := Layout;
+    Spin.Align := TAlignLayout.Right;
+    Spin.Value := Jogadores[i].Pontos;
+    Spin.TextSettings.Font.Size := 20;
+    Spin.TextSettings.Font.Style := [TFontStyle.fsBold];
+    Spin.TextSettings.FontColor := TAlphaColors.White;
+    Spin.StyledSettings := [];
+    Spin.Width := 120;
+    Spin.Tag := Jogadores[i].ID;
+    Spin.OnChange := CalculaPontos;
+  end;
+end;
+
+procedure TFrmImpostor.CalculaPontos(Sender: TObject);
+begin
+  var Spin := Sender as TSpinBox;
+  Jogadores[Spin.Tag - 1].Pontos := Trunc(Spin.Value);
+  ChecaGanhador;
+end;
+
+procedure TFrmImpostor.ChecaGanhador;
+begin
+  for var jogador in jogadores do
+    if jogador.Pontos >= spnQtePontos.Value then
+    begin
+      vertPontos.Enabled := False;
+      AnimaCircle;
+    end;
+end;
+
+procedure TfrmImpostor.MontaTelaRegras;
+var
+  i:integer;
+  Impostores: TStringList;
+  qteImpostores: integer;
+begin
+  Impostores := TStringList.Create;
+  try
+    recFrontResposta.Visible := True;
+    recBackResposta.Visible  := False;
+    recFrontResposta.Opacity := 1;
+    recBackResposta.Opacity  := 0;
+    lblRegrasTema.Text := TemaEscolhido;
+    lblRegrasPlayerInicial.Text := JogadorInicial;
+
+    for i := 0 to High(Jogadores) do
+      if Jogadores[i].IsImpostor then
+        Impostores.Add(Jogadores[i].Nome);
+
+
+    lblRegrasImpostorFront.Text := 'Toque duas vezes para descobrir o impostor !!!';
+    if Trunc(spnImpostor.Value) > 1 then
+      lblRegrasImpostorFront.Text := 'Toque duas vezes para descobrir os impostores !!!';
+
+    lblRegrasImpostorBack.TextSettings.Font.Size := 35;
+    if Impostores.Count > 4 then
+      lblRegrasImpostorBack.TextSettings.Font.Size := 22;
+    lblRegrasImpostorBack.Text := Impostores.Text;
+
+  finally
+    Impostores.Free;
+  end;
+end;
+
+
+//aqui monsta a tela de quando clikamos no nosso nome
+procedure TfrmImpostor.MontaTelaPlayer(ID:integer);
+var
+  i:integer;
+  Impostores: TStringList;
+  qteImpostores: integer;
+begin
+    recFrontPlayer.Opacity := 1;
+    recBackPlayer.Fill.Color := $FFFF8C42;
+    recBackPlayer.Scale.X := 1;
+    recBackPlayer.Scale.Y := 1;
+    recBackPlayer.TagString := '';
+
+    lblCondicaoNomePlayer.Text := Jogadores[ID].Nome;
+    lblBackPlayer.Text := 'A Palavra é ' + sLineBreak + Jogadores[ID].Palavra;
+    if Jogadores[ID].IsImpostor then
+    begin
+      recBackPlayer.Fill.Color:= TAlphaColorRec.Red;
+      lblBackPlayer.Text := 'Você é o impostor ' + sLineBreak ;
+      if recDicas.Tag = 1 then
+        lblBackPlayer.Text:= lblBackPlayer.Text + 'Dica: ' +  Jogadores[ID].Palavra;
+      recBackPlayer.TagString := 'I';
+    end;
+    tab.ActiveTab := tbVerCondicao;
+end;
+
+//animacao de bater coracao pro impostor
+procedure TfrmImpostor.StartHeartbeat(Control: TImage);
+begin
+  HeartbeatTarget := Control;
+  HeartbeatOrigX := Control.Position.X;
+  HeartbeatOrigY := Control.Position.Y;
+
+  AnimHeartX := TFloatAnimation.Create(Control);
+  AnimHeartX.Parent := Control;
+  AnimHeartX.PropertyName := 'Scale.X';
+  AnimHeartX.StartValue := 1;
+  AnimHeartX.StopValue := 1.7;
+  AnimHeartX.Duration := 0.7;
+  AnimHeartX.Interpolation := TInterpolationType.Sinusoidal;
+  AnimHeartX.AutoReverse := True;
+  AnimHeartX.Loop := True;
+  AnimHeartX.OnProcess := HeartbeatProcessX;
+  AnimHeartX.Start;
+
+  AnimHeartY := TFloatAnimation.Create(Control);
+  AnimHeartY.Parent := AnimHeartX.Parent;
+  AnimHeartY.PropertyName := 'Scale.Y';
+  AnimHeartY.StartValue := AnimHeartX.StartValue;
+  AnimHeartY.StopValue := AnimHeartX.StopValue;
+  AnimHeartY.Duration := AnimHeartX.Duration;
+  AnimHeartY.Interpolation := AnimHeartX.Interpolation;
+  AnimHeartY.AutoReverse := AnimHeartX.AutoReverse;
+  AnimHeartY.Loop := AnimHeartX.Loop;
+  AnimHeartY.OnProcess := HeartbeatProcessY;
+  AnimHeartY.Start;
+end;
+
+procedure TfrmImpostor.HeartbeatProcessX(Sender: TObject);
+begin
+  HeartbeatTarget.Position.X := HeartbeatOrigX - (HeartbeatTarget.Width * (HeartbeatTarget.Scale.X - 1)/2);
+end;
+
+procedure TfrmImpostor.HeartbeatProcessY(Sender: TObject);
+begin
+  HeartbeatTarget.Position.Y := HeartbeatOrigY - (HeartbeatTarget.Height * (HeartbeatTarget.Scale.Y - 1)/2);
+end;
+
+procedure TfrmImpostor.imgLogoClick(Sender: TObject);
+begin
+  lytNaoMostrarInstr.Visible := False;
+  lytInstrucoes.Visible := True;
+  vertInstrucoes.BeginUpdate;
+  lytRecInstrucoes.Align    := TAlignLayout.None;
+  AniInstrucoes.Duration    := 0.5;
+  AniInstrucoes.StartValue  := Screen.Height;
+  AniInstrucoes.StopValue   := 0;
+  AniInstrucoes.Start;
+  AniBackInstrucoes.Duration := AniInstrucoes.Duration;
+  AniBackInstrucoes.StartValue := 0;
+  AniBackInstrucoes.StopValue  := 1;
+  AniBackInstrucoes.Start;
+end;
+
+procedure TfrmImpostor.StopHeartbeat(Control: TControl);
+begin
+  if Assigned(AnimHeartX) then
+  begin
+    AnimHeartX.Stop;
+    AnimHeartX.Free;
+    AnimHeartX := nil;
+  end;
+
+  if Assigned(AnimHeartY) then
+  begin
+    AnimHeartY.Stop;
+    AnimHeartY.Free;
+    AnimHeartY := nil;
+  end;
+
+  imgLogo.Scale.X := 1;
+  imgLogo.Scale.Y := imgLogo.Scale.X;
+  imgLogo.Position.X := HeartbeatOrigX;
+  imgLogo.Position.Y := HeartbeatOrigY;
+end;
+
+procedure TfrmImpostor.tabResized(Sender: TObject);
+var
+  size: Single;
+begin
+  size := (lytTemas.Width / 2 ) - 10;
+  lytTemasFilmes.Width      := size;
+  lytTemasMarcas.Width      := size;
+  lytTemasAnimais.Width     := size;
+  lytTemasObjetos.Width     := size;
+  lytTemasComida.Width      := size;
+  lytTemasPersonagens.Width := size;
+  lytTemasAtores.Width      := size;
+  lytTemasCantores.Width    := size;
+
+end;
+
+procedure TfrmImpostor.TestaSeTodosJaViram;
+var vistos: Boolean;
+    Flow : TRectangle;
+begin
+  vistos := True;
+  for Flow in Flows do
+    vistos := vistos and (not Flow.Enabled);
+
+  if vistos then
+    AnimaCircle;
+
+end;
+
+procedure TfrmImpostor.AnimaCircle;
+begin
+  circleAni.Visible := True;
+  circleAni.Opacity := 1;
+  circleAni.Height := 0;
+  circleAni.Width := 0;
+  AniCircleHeight.StopValue := MaxSize;
+  AniCircleWidth.StopValue := AniCircleHeight.StopValue;
+  AniCircleHeight.Start;
+  AniCircleWidth.Start;
+end;
+
+
+procedure TfrmImpostor.TimerTimer(Sender: TObject);
+begin
+
+  if Random(9000) = 4000 then
+  begin
+    if lytMain.RotationAngle = 0 then
+      lytMain.AnimateFloat('RotationAngle', 360, 1)
+    else
+      lytMain.AnimateFloat('RotationAngle', 0, 1);
+  end;
+end;
+
+procedure TfrmImpostor.Switch(rect:TRectangle;  circle:TCircle);
+begin
+  if rect.Tag = 0 then
+  begin
+    circle.AnimateFloat('Position.X', rect.Width - circle.Width - circle.Margins.Right, 0.2);
+    rect.Tag := 1;
+    rect.Fill.Color := TAlphaColors.Cornflowerblue;
+
+  end
+  else
+  begin
+    circle.AnimateFloat('Position.X', circle.Margins.Left, 0.2);
+    rect.Tag := 0;
+    rect.Fill.Color := TAlphaColors.Darkgray;
+  end
+end;
+
+procedure TfrmImpostor.ColocarNomes;
+var
+  i   : integer;
+  Edit: TEdit;
+begin
+  SetLength(Jogadores, Trunc(spnJogadores.Value));
+
+  if Assigned(Edits) then
+  begin
+    for Edit in Edits do
+      Edit.DisposeOf;
+    Edits.Clear;
+  end
+  else
+    Edits := TList<TEdit>.Create;
+
+  for i := 0 to High(Jogadores) do
+  begin
+    Edit := TEdit.Create(Self);
+    Edit.Parent := vertNomes;
+    Edit.Position.X := 10;
+    Edit.Position.Y := i * 55;
+    Edit.Width := vertNomes.Width - 20;
+    Edit.Height := 45;
+    Edit.MaxLength := 8;
+    Edit.StyledSettings := [];
+    Edit.TextSettings.Font.Size := 30;
+    Edit.TextSettings.Font.Style := [TFontStyle.fsBold];
+    Edit.TextSettings.FontColor  := TAlphaColors.White;
+    Edit.CharCase:= TEditCharCase.ecUpperCase;
+    Edit.TextPrompt := 'Jogador ' + (i+1).ToString;
+    Edits.Add(Edit);
+  end;
+end;
+
+procedure TfrmImpostor.ComecaJogo;
+const
+  Colunas = 3;
+  Espacamento = 12;
+var
+  Icone, Fundo: TRectangle;
+  Nome: TLabel;
+  Flow: TRectangle;
+  Tamanho: Single;
+  Sombra: TShadowEffect;
+  i, Linha, Coluna: Integer;
+  X, Y: Single;
+begin
+  vertPlayers.BeginUpdate;
+  try
+    if Assigned(Flows) then
+    begin
+      for Flow in Flows do
+        Flow.DisposeOf;
+      Flows.Clear;
+    end
+    else
+      Flows := TList<TRectangle>.Create;
+
+    Tamanho := (vertPlayers.Width - (Espacamento * (Colunas + 1))) / Colunas;
+    for i := 0 to High(Jogadores) do
+    begin
+      Linha := i div Colunas;
+      Coluna := i mod Colunas;
+
+      X := Espacamento + Coluna * (Tamanho + Espacamento);
+      Y := Espacamento + Linha * (Tamanho + Espacamento);
+
+      Fundo := TRectangle.Create(vertPlayers);
+      Fundo.Parent := vertPlayers;
+      Fundo.Width := Tamanho;
+      Fundo.Height := Tamanho;
+      Fundo.Position.X := X;
+      Fundo.Position.Y := Y;
+      Fundo.XRadius := 20;
+      Fundo.YRadius := 20;
+      Fundo.Fill.Color := $FF3B82F6;
+      Fundo.Stroke.Kind := TBrushKind.None;
+      Fundo.HitTest := True;
+      Fundo.Opacity := 1;
+      Fundo.Tag := Jogadores[i].ID;
+      Fundo.OnClick := PlayerClick;
+      Flows.Add(Fundo);
+
+      Sombra := TShadowEffect.Create(Fundo);
+      Sombra.Parent := Fundo;
+      Sombra.Opacity := 0.3;
+      Sombra.Distance := 6;
+      Sombra.Direction := 90;
+      Sombra.Softness := 0.4;
+
+      Nome := TLabel.Create(Fundo);
+      Nome.Parent := Fundo;
+      Nome.Align := TAlignLayout.Client;
+      Nome.Margins.Bottom := 10;
+      Nome.Text := Jogadores[i].Nome;
+      Nome.TextSettings.Font.Size := 16;
+      Nome.TextSettings.Font.Style := [TFontStyle.fsBold];
+      Nome.TextSettings.FontColor := TAlphaColors.White;
+      Nome.TextSettings.HorzAlign := TTextAlign.Center;
+      Nome.TextSettings.VertAlign := TTextAlign.Center;
+      Nome.StyledSettings := [];
+      Nome.HitTest := False;
+
+    end;
+  finally
+    vertPlayers.EndUpdate;
+  end;
+
+end;
+
+procedure TfrmImpostor.FormCreate(Sender: TObject);
+begin
+  Randomize;
+  LerStatus;
+  tab.TabPosition := TTabPosition.None;
+  tab.ActiveTab := tbMain;
+  CarregarPalavrasDoJSON(JSONArquivo);
+  lytNaoMostrarInstr.Visible := True;
+  lytInstrucoes.Visible := not chkNaoMostrarInstr.IsChecked;
+  Switch(recTemasFilmes, circleTemasFilmes);
+  Switch(recTemasMarcas, circleTemasMarcas);
+  Switch(recTemasAnimais, circleTemasAnimais);
+  Switch(recTemasObjetos, circleTemasObjetos);
+  Switch(recTemasComida, circleTemasComida);
+  Switch(recTemasPersonagens, circleTemasPersonagens);
+  Switch(recTemasAtores, circleTemasAtores);
+  Switch(recTemasCantores, circleTemasCantores);
+  Switch(recVerTema, circleVerTema);
+  Switch(recDicas, circleDicas);
+  //Switch(recPontos,circlePontos);
+end;
+
+procedure TfrmImpostor.FormResize(Sender: TObject);
+begin
+  MaxSize := Sqrt(Power(lytMain.Width, 2) + Power(lytMain.Height, 2)) * 2;
+end;
+
+procedure TfrmImpostor.FormShow(Sender: TObject);
+begin
+  if lytInstrucoes.Visible then
+  begin
+    vertInstrucoes.BeginUpdate;
+    lytRecInstrucoes.Align    := TAlignLayout.None;
+    AniInstrucoes.StartValue  := Screen.Height;
+    AniInstrucoes.StopValue   := 0;
+    AniInstrucoes.Start;
+  end;
+  Balao.Visible := True;
+  AniBalao.Start;
+end;
+
+//parte do modal de mensagem
+procedure TfrmImpostor.ShowModalConfirm(const Question: string; OnResult: TProc<Boolean>);
+begin
+
+  BlurMsg.Enabled := True;
+  lblQuestion.Text := Question;
+  lytMsg.Visible := True;
+  recModal.Align := TAlignLayout.None;
+  AniMsg.StartValue := 0;
+  AniMsg.StopValue := Trunc((lytMsg.Height / 2) - (recModal.Height / 2));
+  AniMsg.Start;
+  AniBackMsg.StartValue := 0;
+  AniBackMsg.StopValue  := 0.7;
+  AniBackMsg.Start;
+  FModalCallback := OnResult;
+  btnYes.OnClick := btnYesClick;
+  btnNo.OnClick := btnNoClick;
+end;
+
+procedure TfrmImpostor.btnYesClick(Sender: TObject);
+begin
+  BlurMsg.Enabled := False;
+  lytMsg.Visible := False;
+
+  if Assigned(FModalCallback) then
+  begin
+    FModalCallback(True);
+    FModalCallback := nil;
+  end;
+end;
+
+procedure TfrmImpostor.btnNoClick(Sender: TObject);
+begin
+  BlurMsg.Enabled := False;
+  lytMsg.Visible := False;
+  if Assigned(FModalCallback) then
+  begin
+    FModalCallback(False);
+    FModalCallback := nil;
+  end;
+end;
+//fim modal de mensagem
+
+//animacoes de esmaecimento quando clikamos par ver a palavra e o impostor no fianl
+procedure TfrmImpostor.recFrontPlayerDblClick(Sender: TObject);
+begin
+  recBackPlayer.Scale.X := 1;
+  recBackPlayer.Scale.Y := 1;
+  FadeTroca(recFrontPlayer, recBackPlayer);
+end;
+
+procedure TfrmImpostor.recFrontRespostaDblClick(Sender: TObject);
+begin
+  FadeTroca(recFrontResposta, recBackResposta);
+end;
+
+procedure TfrmImpostor.recPontosClick(Sender: TObject);
+begin
+  lytQtePontos.Align := TAlignLayout.None;
+  lytQtePontos.SendToBack;
+  AniQtePontos.StartValue := lytPontos.Position.Y;
+  AniQtePontos.StopValue := AniQtePontos.StartValue + lytQtePontos.Height;
+  Switch(recPontos, circlePontos);
+  if recPontos.Tag = 1 then
+  begin
+    lytQtePontos.Visible:= True;
+    AniQtePontos.Start;
+  end
+  else
+  begin
+    AniQtePontos.StartValue := lytPontos.Position.Y + lytQtePontos.Height;
+    AniQtePontos.StopValue := lytPontos.Position.Y;
+    AniQtePontos.Start;
+  end;
+end;
+
+procedure TfrmImpostor.FadeTroca(FrontRect, BackRect: TRectangle);
+var
+  AnimFade: TFloatAnimation;
+begin
+  AnimFade := TFloatAnimation.Create(FrontRect);
+  AnimFade.Parent := FrontRect;
+  AnimFade.PropertyName := 'Opacity';
+  AnimFade.StartValue := 1;
+  AnimFade.StopValue := 0;
+  AnimFade.Duration := 1;
+  AnimFade.Interpolation := TInterpolationType.Sinusoidal;
+
+  FrontRect.TagObject := BackRect;
+  AnimFade.OnFinish := AnimFadeFinish;
+  AnimFade.Start;
+end;
+
+procedure TfrmImpostor.AniBackInstrucoesFinish(Sender: TObject);
+begin
+  if AniBackInstrucoes.StartValue <> 0 then
+    lytInstrucoes.Visible := False;
+end;
+
+procedure TfrmImpostor.AniBackMsgFinish(Sender: TObject);
+begin
+  //if AniBackMsg.StopValue = 0 then
+  //begin
+  //  BlurMsg.Enabled := False;
+  //  lytMsg.Visible := False;
+  //end;
+end;
+
+procedure TfrmImpostor.AniCircleOpacityFinish(Sender: TObject);
+begin
+  circleAni.Visible := False;
+end;
+
+procedure TfrmImpostor.AniCircleWidthFinish(Sender: TObject);
+begin
+  vertPontos.Enabled := True;
+  if tab.ActiveTab = tbPontos then
+    tab.ActiveTab := tbVencedor
+  else
+    tab.ActiveTab := tbRegras;
+  AniCircleOpacity.StopValue:= 0;
+  AniCircleOpacity.Start;
+end;
+
+procedure TfrmImpostor.AniInstrucoesFinish(Sender: TObject);
+begin
+  lytRecInstrucoes.Align := TAlignLayout.Client;
+  vertInstrucoes.EndUpdate;
+end;
+
+procedure TfrmImpostor.AnimFadeFinish(Sender: TObject);
+var
+  Anim: TFloatAnimation;
+  FrontRect, BackRect: TRectangle;
+
+begin
+  Anim := Sender as TFloatAnimation;
+  FrontRect := Anim.Parent as TRectangle;
+  BackRect := TRectangle(FrontRect.TagObject);
+  FrontRect.Visible := False;
+  BackRect.Opacity := 0;
+  BackRect.Visible := True;
+  TAnimator.AnimateFloat(BackRect, 'Opacity', 1, 2);
+  if (BackRect.TagString = 'I') and (tab.ActiveTab = tbVerCondicao) then
+  begin
+    AnimaFundoImpostor;
+    StartHeartbeat(imgLogo);
+  end
+  else
+    StopHeartbeat(imgLogo);
+
+end;
+
+procedure TfrmImpostor.AniMsgFinish(Sender: TObject);
+begin
+  recModal.Align := TAlignLayout.Center;
+end;
+
+procedure TfrmImpostor.AniQtePontosFinish(Sender: TObject);
+begin
+  lytQtePontos.Align := TAlignLayout.Top;
+  lytQtePontos.Visible:= recPontos.Tag = 1;
+end;
+
+procedure TfrmImpostor.AniVencedorProcess(Sender: TObject);
+begin
+  if lblVencedor.Font.Size = 60 then
+    inc(contGira);
+
+  if contGira = 3 then
+  begin
+    AniVencedorGira.Start;
+    contGira:= 0;
+  end;
+end;
+
+//fim das animacoes
+
+//programacao do botao la de baixo
+procedure TfrmImpostor.recBotaoClick(Sender: TObject);
+var
+  i: integer;
+  Edit: TEdit;
+  preenchidos: Boolean;
+begin
+  StopHeartbeat(imgLogo);
+
+  if tab.ActiveTab = tbNomes then
+  begin
+    for i := 0 to Edits.Count - 1 do
+    begin
+      Edit := Edits[i];
+      Jogadores[i].ID := i + 1;
+      if Edit.Text.Trim > '' then
+        Jogadores[i].Nome := Edit.Text.Trim
+      else
+        Jogadores[i].Nome := Edit.TextPrompt;
+    end;
+    ZeraPontos;
+    Randomiza;
+    ComecaJogo;
+    tab.ActiveTab := tbJogo;
+  end
+  else if tab.ActiveTab = tbMain then
+  begin
+    CheckSwitchsTemas;
+    tab.ActiveTab := tbNomes;
+  end
+  else if tab.ActiveTab = tbRegras then
+  begin
+    if recPontos.Tag = 1 then
+      tab.ActiveTab := tbPontos
+    else
+      ResetGame;
+  end
+  else if tab.ActiveTab = tbVerCondicao then
+  begin
+    tab.ActiveTab := tbJogo;
+  end
+  else if tab.ActiveTab = tbJogo then
+  begin
+    ShowModalConfirm('Voltar para o início?',
+      procedure(Result: Boolean)
+      begin
+        if not Result then tab.ActiveTab := tbMain;
+      end);
+  end
+  else if tab.ActiveTab = tbPontos then
+  begin
+    ResetGame;
+  end
+  else if tab.ActiveTab = tbVencedor then
+  begin
+    TemaEscolhido := '';
+    JogadorInicial:= '';
+    SetLength(Jogadores, 0);
+    tab.ActiveTab := tbMain;
+  end;
+end;
+
+procedure TFrmImpostor.ZeraPontos;
+var
+  i: integer;
+begin
+  for i := 0 to High(Jogadores) do
+    Jogadores[i].Pontos := 0;
+end;
+
+procedure TfrmImpostor.recDicasClick(Sender: TObject);
+begin
+  Switch(recDicas, circleDicas);
+end;
+
+procedure TfrmImpostor.CheckSwitchsTemas;
+begin
+   if not (recTemasFilmes.Tag = 1) and
+      not (recTemasAnimais.Tag = 1) and
+      not (recTemasComida.Tag = 1) and
+      not (recTemasAtores.Tag = 1) and
+      not (recTemasMarcas.Tag = 1) and
+      not (recTemasObjetos.Tag = 1) and
+      not (recTemasPersonagens.Tag = 1) and
+      not (recTemasCantores.Tag = 1) then
+   begin
+     recTemasFilmes.Tag := 1;
+     recTemasAnimais.Tag := 1;
+     recTemasComida.Tag := 1;
+     recTemasAtores.Tag := 1;
+     recTemasMarcas.Tag := 1;
+     recTemasObjetos.Tag := 1;
+     recTemasPersonagens.Tag := 1;
+     recTemasCantores.Tag := 1;
+   end;
+end;
+
+//reseta do game la no final
+procedure TfrmImpostor.recTemasAnimaisClick(Sender: TObject);
+begin
+  Switch(recTemasAnimais, circleTemasAnimais);
+end;
+
+procedure TfrmImpostor.recTemasAtoresClick(Sender: TObject);
+begin
+  Switch(recTemasAtores, circleTemasAtores);
+end;
+
+procedure TfrmImpostor.recTemasCantoresClick(Sender: TObject);
+begin
+  Switch(recTemasCantores, circleTemasCantores);
+end;
+
+procedure TfrmImpostor.recTemasComidaClick(Sender: TObject);
+begin
+  Switch(recTemasComida, circleTemasComida);
+end;
+
+procedure TfrmImpostor.recTemasFilmesClick(Sender: TObject);
+begin
+  Switch(recTemasFilmes, circleTemasFilmes);
+end;
+
+procedure TfrmImpostor.recTemasMarcasClick(Sender: TObject);
+begin
+  Switch(recTemasMarcas, circleTemasMarcas);
+end;
+
+procedure TfrmImpostor.recTemasObjetosClick(Sender: TObject);
+begin
+   Switch(recTemasObjetos, circleTemasObjetos);
+end;
+
+procedure TfrmImpostor.recTemasPersonagensClick(Sender: TObject);
+begin
+  Switch(recTemasPersonagens, circleTemasPersonagens);
+end;
+
+procedure TfrmImpostor.recVerTemaClick(Sender: TObject);
+begin
+  Switch(recVerTema, circleVerTema);
+end;
+
+procedure TfrmImpostor.Rectangle3Click(Sender: TObject);
+begin
+  SalvarStatus;
+  vertInstrucoes.BeginUpdate;
+  lytRecInstrucoes.Align    := TAlignLayout.None;
+  AniInstrucoes.StopValue  := screen.Height ;
+  AniInstrucoes.StartValue := 0;
+  AniInstrucoes.Start;
+  AniBackInstrucoes.Duration := AniInstrucoes.Duration;
+  AniBackInstrucoes.StartValue := 1;
+  AniBackInstrucoes.StopValue  := 0;
+  AniBackInstrucoes.Start;
+end;
+
+procedure TfrmImpostor.ResetGame;
+var
+  Resposta: Integer;
+begin
+  Randomiza;
+  ComecaJogo;
+  tab.ActiveTab := tbJogo;
+  Exit;
+  ShowModalConfirm('Jogar com as mesmas regras?',
+  procedure(Result: Boolean)
+  begin
+    if not Result then
+    begin
+      Randomiza;
+      ComecaJogo;
+      tab.ActiveTab := tbJogo;
+    end
+    else
+    begin
+      TemaEscolhido := '';
+      JogadorInicial:= '';
+
+      SetLength(Jogadores, 0);
+
+      if Assigned(Edits) then
+      begin
+        for var Edit in Edits do
+          Edit.DisposeOf;
+        Edits.Clear;
+      end;
+
+      if Assigned(Flows) then
+      begin
+        for var Flow in Flows do
+          Flow.DisposeOf;
+        Flows.Clear;
+      end;
+
+      tab.ActiveTab := tbMain;
+    end;
+  end);
+
+end;
+
+
+//quando clikamos no nossos nomes
+procedure TfrmImpostor.PlayerClick(Sender: TObject);
+var
+  Icon: TRectangle;
+begin
+  Icon := Sender as TRectangle;
+  Icon.Enabled := False;
+  MontaTelaPlayer(Icon.Tag - 1);
+end;
+
+end.
