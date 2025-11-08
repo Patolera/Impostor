@@ -1,0 +1,6 @@
+platform select remote-android
+platform connect unix-abstract-connect:///data/local/tmp/debug.sock device=RQ8MB0G88AD
+settings set plugin.jit-loader.gdb.enable off
+settings append target.exec-search-paths 'D:\Projetos\Impostor\Android\Release\Impostor\debug\'
+process attach -pid=5385
+target symbols add "D:\Projetos\Impostor\Android\Release\Impostor\debug\libImpostor.so"

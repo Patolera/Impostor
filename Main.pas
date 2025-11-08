@@ -1044,20 +1044,7 @@ begin
   BackRect.Opacity := 0;
   BackRect.Visible := True;
   TAnimator.AnimateFloat(BackRect, 'Opacity', 1, 2);
-
-  TThread.CreateAnonymousThread(
-    procedure
-    begin
-      TThread.Sleep(1000);
-      TThread.Synchronize(nil,
-        procedure
-        begin
-          recBotao.Enabled:= True;
-        end
-      );
-    end
-  ).Start;
-
+  recBotao.Enabled:= True;
   if (BackRect.TagString = 'I') and (tab.ActiveTab = tbVerCondicao) then
     StartHeartbeat
   else
