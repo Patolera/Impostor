@@ -27730,6 +27730,26 @@ object frmImpostor: TfrmImpostor
             Opacity = 0.600000023841857900
             ShadowColor = claBlack
           end
+          object AnimHeartX: TFloatAnimation
+            AutoReverse = True
+            Duration = 0.699999988079071000
+            Interpolation = Sinusoidal
+            Loop = True
+            OnProcess = AnimHeartXProcess
+            PropertyName = 'Scale.X'
+            StartValue = 1.000000000000000000
+            StopValue = 1.700000047683716000
+          end
+          object AnimHeartY: TFloatAnimation
+            AutoReverse = True
+            Duration = 0.699999988079071000
+            Interpolation = Sinusoidal
+            Loop = True
+            OnProcess = AnimHeartYProcess
+            PropertyName = 'Scale.Y'
+            StartValue = 1.000000000000000000
+            StopValue = 1.700000047683716000
+          end
         end
         object Balao: TCalloutRectangle
           Align = Center
@@ -27790,7 +27810,7 @@ object frmImpostor: TfrmImpostor
         Size.PlatformDefault = False
         StyleLookup = 'tabcontrolstyle'
         TabHeight = 49.000000000000000000
-        TabIndex = 5
+        TabIndex = 4
         TabOrder = 0
         TabPosition = Top
         OnChange = tabChange
@@ -28808,7 +28828,7 @@ object frmImpostor: TfrmImpostor
           CustomIcon = <
             item
             end>
-          IsSelected = False
+          IsSelected = True
           Size.Width = 49.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
@@ -28918,7 +28938,7 @@ object frmImpostor: TfrmImpostor
           CustomIcon = <
             item
             end>
-          IsSelected = True
+          IsSelected = False
           Size.Width = 49.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
@@ -29004,6 +29024,8 @@ object frmImpostor: TfrmImpostor
           StyleLookup = ''
           TabOrder = 0
           Text = 'tbVencedor'
+          ExplicitSize.cx = 52.000000000000000000
+          ExplicitSize.cy = 49.000000000000000000
           object Label10: TLabel
             Align = Top
             AutoSize = True

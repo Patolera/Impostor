@@ -190,6 +190,8 @@ type
     ShadowEffect13: TShadowEffect;
     AniVencedorGira: TFloatAnimation;
     ShadowEffect15: TShadowEffect;
+    AnimHeartX: TFloatAnimation;
+    AnimHeartY: TFloatAnimation;
     procedure spnJogadoresChange(Sender: TObject);
     procedure tabResized(Sender: TObject);
     procedure tabChange(Sender: TObject);
@@ -221,6 +223,8 @@ type
     procedure recPontosClick(Sender: TObject);
     procedure AniQtePontosFinish(Sender: TObject);
     procedure AniVencedorProcess(Sender: TObject);
+    procedure AnimHeartXProcess(Sender: TObject);
+    procedure AnimHeartYProcess(Sender: TObject);
 
   private
     { Private declarations }
@@ -239,10 +243,8 @@ type
     procedure btnNoClick(Sender: TObject);
     procedure AnimFadeFinish(Sender: TObject);
     procedure FadeTroca(FrontRect, BackRect: TRectangle);
-    procedure StartHeartbeat(Control: TImage);
-    procedure StopHeartbeat(Control: TControl);
-    procedure HeartbeatProcessX(Sender: TObject);
-    procedure HeartbeatProcessY(Sender: TObject);
+    procedure StartHeartbeat;
+    procedure StopHeartbeat;
     procedure SalvarStatus;
     procedure LerStatus;
     function GetIniFileName: string;
@@ -281,6 +283,7 @@ type
     InstrucoesCliked: Boolean;
     MaxSize : single;
     contGira: integer;
+    sVencedorRodada:string;
 
   const sMsgPontos = '1 Ponto para quem acertou o impostor' + sLineBreak +
                      '3 Pontos para o impostor se ele não foi descoberto' + sLineBreak +
@@ -443,6 +446,8 @@ begin
   lytBotao.Visible := True;
   Balao.Visible := False;
   AniBalao.Stop;
+  StopHeartbeat;
+  recBotao.Enabled:= True;
 
   if tab.ActiveTab = tbNomes then
   begin
@@ -463,6 +468,7 @@ begin
   end
   else if tab.ActiveTab = tbVerCondicao then
   begin
+    recBotao.Enabled:= False;
     lbBotao.Text := 'Voltar';
     recFrontPlayer.Visible := True;
     recBackPlayer.Visible  := False;
@@ -481,6 +487,7 @@ begin
   end
   else if tab.ActiveTab = tbVencedor then
   begin
+    lblVencedor.Text:= sVencedorRodada;
     lbBotao.Text := 'Jogar de novo';
   end;
 end;
@@ -558,6 +565,7 @@ begin
   for var jogador in jogadores do
     if jogador.Pontos >= spnQtePontos.Value then
     begin
+      sVencedorRodada:= jogador.Nome;
       vertPontos.Enabled := False;
       AnimaCircle;
     end;
@@ -625,45 +633,31 @@ begin
 end;
 
 //animacao de bater coracao pro impostor
-procedure TfrmImpostor.StartHeartbeat(Control: TImage);
+procedure TfrmImpostor.StartHeartbeat;
 begin
-  HeartbeatTarget := Control;
-  HeartbeatOrigX := Control.Position.X;
-  HeartbeatOrigY := Control.Position.Y;
+  HeartbeatOrigX := imgLogo.Position.X;
+  HeartbeatOrigY := imgLogo.Position.Y;
 
-  AnimHeartX := TFloatAnimation.Create(Control);
-  AnimHeartX.Parent := Control;
-  AnimHeartX.PropertyName := 'Scale.X';
-  AnimHeartX.StartValue := 1;
-  AnimHeartX.StopValue := 1.7;
-  AnimHeartX.Duration := 0.7;
-  AnimHeartX.Interpolation := TInterpolationType.Sinusoidal;
-  AnimHeartX.AutoReverse := True;
-  AnimHeartX.Loop := True;
-  AnimHeartX.OnProcess := HeartbeatProcessX;
   AnimHeartX.Start;
 
-  AnimHeartY := TFloatAnimation.Create(Control);
-  AnimHeartY.Parent := AnimHeartX.Parent;
-  AnimHeartY.PropertyName := 'Scale.Y';
-  AnimHeartY.StartValue := AnimHeartX.StartValue;
-  AnimHeartY.StopValue := AnimHeartX.StopValue;
-  AnimHeartY.Duration := AnimHeartX.Duration;
-  AnimHeartY.Interpolation := AnimHeartX.Interpolation;
-  AnimHeartY.AutoReverse := AnimHeartX.AutoReverse;
-  AnimHeartY.Loop := AnimHeartX.Loop;
-  AnimHeartY.OnProcess := HeartbeatProcessY;
+  AnimHeartY.PropertyName   := 'Scale.Y';
+  AnimHeartY.StartValue     := AnimHeartX.StartValue;
+  AnimHeartY.StopValue      := AnimHeartX.StopValue;
+  AnimHeartY.Duration       := AnimHeartX.Duration;
+  AnimHeartY.Interpolation  := AnimHeartX.Interpolation;
+  AnimHeartY.AutoReverse    := AnimHeartX.AutoReverse;
+  AnimHeartY.Loop           := AnimHeartX.Loop;
   AnimHeartY.Start;
 end;
 
-procedure TfrmImpostor.HeartbeatProcessX(Sender: TObject);
+procedure TfrmImpostor.StopHeartbeat;
 begin
-  HeartbeatTarget.Position.X := HeartbeatOrigX - (HeartbeatTarget.Width * (HeartbeatTarget.Scale.X - 1)/2);
-end;
-
-procedure TfrmImpostor.HeartbeatProcessY(Sender: TObject);
-begin
-  HeartbeatTarget.Position.Y := HeartbeatOrigY - (HeartbeatTarget.Height * (HeartbeatTarget.Scale.Y - 1)/2);
+  AnimHeartX.Stop;
+  AnimHeartY.Stop;
+  imgLogo.Scale.X := 1;
+  imgLogo.Scale.Y := imgLogo.Scale.X;
+  imgLogo.Position.X := HeartbeatOrigX;
+  imgLogo.Position.Y := HeartbeatOrigY;
 end;
 
 procedure TfrmImpostor.imgLogoClick(Sender: TObject);
@@ -682,27 +676,7 @@ begin
   AniBackInstrucoes.Start;
 end;
 
-procedure TfrmImpostor.StopHeartbeat(Control: TControl);
-begin
-  if Assigned(AnimHeartX) then
-  begin
-    AnimHeartX.Stop;
-    AnimHeartX.Free;
-    AnimHeartX := nil;
-  end;
 
-  if Assigned(AnimHeartY) then
-  begin
-    AnimHeartY.Stop;
-    AnimHeartY.Free;
-    AnimHeartY := nil;
-  end;
-
-  imgLogo.Scale.X := 1;
-  imgLogo.Scale.Y := imgLogo.Scale.X;
-  imgLogo.Position.X := HeartbeatOrigX;
-  imgLogo.Position.Y := HeartbeatOrigY;
-end;
 
 procedure TfrmImpostor.tabResized(Sender: TObject);
 var
@@ -1062,7 +1036,6 @@ procedure TfrmImpostor.AnimFadeFinish(Sender: TObject);
 var
   Anim: TFloatAnimation;
   FrontRect, BackRect: TRectangle;
-
 begin
   Anim := Sender as TFloatAnimation;
   FrontRect := Anim.Parent as TRectangle;
@@ -1071,11 +1044,34 @@ begin
   BackRect.Opacity := 0;
   BackRect.Visible := True;
   TAnimator.AnimateFloat(BackRect, 'Opacity', 1, 2);
-  if (BackRect.TagString = 'I') and (tab.ActiveTab = tbVerCondicao) then
-    StartHeartbeat(imgLogo)
-  else
-    StopHeartbeat(imgLogo);
 
+  TThread.CreateAnonymousThread(
+    procedure
+    begin
+      TThread.Sleep(1000);
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          recBotao.Enabled:= True;
+        end
+      );
+    end
+  ).Start;
+
+  if (BackRect.TagString = 'I') and (tab.ActiveTab = tbVerCondicao) then
+    StartHeartbeat
+  else
+    StopHeartbeat;
+end;
+
+procedure TfrmImpostor.AnimHeartXProcess(Sender: TObject);
+begin
+  imgLogo.Position.X := HeartbeatOrigX - (imgLogo.Width * (imgLogo.Scale.X - 1)/2);
+end;
+
+procedure TfrmImpostor.AnimHeartYProcess(Sender: TObject);
+begin
+  imgLogo.Position.Y := HeartbeatOrigY - (imgLogo.Height * (imgLogo.Scale.Y - 1)/2);
 end;
 
 procedure TfrmImpostor.AniMsgFinish(Sender: TObject);
@@ -1110,7 +1106,7 @@ var
   Edit: TEdit;
   preenchidos: Boolean;
 begin
-  StopHeartbeat(imgLogo);
+  StopHeartbeat;
 
   if tab.ActiveTab = tbNomes then
   begin

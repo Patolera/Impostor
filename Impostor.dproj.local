@@ -2,14 +2,14 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2025/10/17 18:48:38.000.662,=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2025/10/17 18:49:20.000.551,C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\andre\Desktop\Impostor\Main.pas</Transaction>
-    <Transaction>2025/10/17 18:49:20.000.551,C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\Users\andre\Desktop\Impostor\Main.fmx</Transaction>
-    <Transaction>2025/10/17 18:49:22.000.251,C:\Users\andre\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\andre\Desktop\Impostor\Project1.dproj</Transaction>
-    <Transaction>2025/10/17 18:49:51.000.594,C:\Users\andre\Desktop\Impostor\Project1.dproj=C:\Users\andre\Desktop\Impostor\Impostor.dproj</Transaction>
+    <Transaction>2025/10/17 18:49:20.000.551,C:\Users\andre\Desktop\Impostor\Main.pas=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/10/17 18:49:20.000.551,C:\Users\andre\Desktop\Impostor\Main.fmx=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2025/10/17 18:49:22.000.251,C:\Users\andre\Desktop\Impostor\Project1.dproj=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2025/10/17 18:49:51.000.594,C:\Users\andre\Desktop\Impostor\Impostor.dproj=C:\Users\andre\Desktop\Impostor\Project1.dproj</Transaction>
     <Transaction>2025/10/18 00:03:16.000.553,=C:\Users\andre\Desktop\Impostor\Unit1.pas</Transaction>
-    <Transaction>2025/10/18 00:03:44.000.327,C:\Users\andre\Desktop\Impostor\UnJSON.pas=C:\Users\andre\Desktop\Impostor\Unit1.pas</Transaction>
+    <Transaction>2025/10/18 00:03:44.000.327,C:\Users\andre\Desktop\Impostor\Unit1.pas=C:\Users\andre\Desktop\Impostor\UnJSON.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile Android="RQ8MB0G88AD" Android64="RQ8MB0G88AD"/>
+		<NoProfile Android="" Android64="192.168.0.158:5555"/>
 	</ActiveMobileDevice>
 </BorlandProject>

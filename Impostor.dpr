@@ -14,3 +14,4 @@ begin
   Application.CreateForm(TfrmImpostor, frmImpostor);
   Application.Run;
 end.
+
