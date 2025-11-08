@@ -10,6 +10,6 @@
     <Transaction>2025/10/18 00:03:44.000.327,C:\Users\andre\Desktop\Impostor\UnJSON.pas=C:\Users\andre\Desktop\Impostor\Unit1.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile Android="" Android64="RQ8MB0G88AD"/>
+		<NoProfile Android="RQ8MB0G88AD" Android64="RQ8MB0G88AD"/>
 	</ActiveMobileDevice>
 </BorlandProject>
