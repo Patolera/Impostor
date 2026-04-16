@@ -1,8 +1,8 @@
 object frmImpostor: TfrmImpostor
   Left = 0
   Top = 0
-  ClientHeight = 891
-  ClientWidth = 362
+  ClientHeight = 892
+  ClientWidth = 364
   Fill.Color = claDarkslateblue
   Fill.Kind = Solid
   FormFactor.Width = 320
@@ -16,20 +16,20 @@ object frmImpostor: TfrmImpostor
   DesignerMasterStyle = 3
   object lytMain: TLayout
     Align = Client
-    Size.Width = 362.000000000000000000
-    Size.Height = 891.000000000000000000
+    Size.Width = 364.000000000000000000
+    Size.Height = 892.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object lytGame: TLayout
       Align = Client
-      Size.Width = 362.000000000000000000
-      Size.Height = 891.000000000000000000
+      Size.Width = 364.000000000000000000
+      Size.Height = 892.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       object lytBotao: TLayout
         Align = Bottom
-        Position.Y = 795.000000000000000000
-        Size.Width = 362.000000000000000000
+        Position.Y = 796.000000000000000000
+        Size.Width = 364.000000000000000000
         Size.Height = 96.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
@@ -42,7 +42,7 @@ object frmImpostor: TfrmImpostor
           Margins.Bottom = 20.000000000000000000
           Position.X = 20.000000000000000000
           Position.Y = 16.000000000000000000
-          Size.Width = 322.000000000000000000
+          Size.Width = 324.000000000000000000
           Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
@@ -52,7 +52,7 @@ object frmImpostor: TfrmImpostor
           object lbBotao: TLabel
             Align = Client
             StyledSettings = [Family]
-            Size.Width = 322.000000000000000000
+            Size.Width = 324.000000000000000000
             Size.Height = 60.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 38.000000000000000000
@@ -73,7 +73,7 @@ object frmImpostor: TfrmImpostor
       end
       object lytLogo: TLayout
         Align = Top
-        Size.Width = 362.000000000000000000
+        Size.Width = 364.000000000000000000
         Size.Height = 150.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 5
@@ -27805,8 +27805,8 @@ object frmImpostor: TfrmImpostor
         Margins.Top = 10.000000000000000000
         Margins.Right = 8.000000000000000000
         Margins.Bottom = 4.000000000000000000
-        Size.Width = 346.000000000000000000
-        Size.Height = 631.000000000000000000
+        Size.Width = 348.000000000000000000
+        Size.Height = 632.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'tabcontrolstyle'
         TabHeight = 49.000000000000000000
@@ -27816,20 +27816,20 @@ object frmImpostor: TfrmImpostor
         OnChange = tabChange
         OnResized = tabResized
         Sizes = (
-          346s
-          582s
-          346s
-          582s
-          346s
-          582s
-          346s
-          582s
-          346s
-          582s
-          346s
-          582s
-          346s
-          582s)
+          348s
+          583s
+          348s
+          583s
+          348s
+          583s
+          348s
+          583s
+          348s
+          583s
+          348s
+          583s
+          348s
+          583s)
         object tbMain: TTabItem
           CustomIcon = <
             item
@@ -27845,17 +27845,17 @@ object frmImpostor: TfrmImpostor
           ExplicitSize.cy = 49.000000000000000000
           object vertMain: TVertScrollBox
             Align = Client
-            Size.Width = 346.000000000000000000
-            Size.Height = 582.000000000000000000
+            Size.Width = 348.000000000000000000
+            Size.Height = 583.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 4
             ShowScrollBars = False
-            Viewport.Width = 346.000000000000000000
-            Viewport.Height = 582.000000000000000000
+            Viewport.Width = 348.000000000000000000
+            Viewport.Height = 583.000000000000000000
             object lytImpostor: TLayout
               Align = Top
               Position.Y = 65.000000000000000000
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 65.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
@@ -27867,7 +27867,7 @@ object frmImpostor: TfrmImpostor
                 Min = 1.000000000000000000
                 Max = 1.000000000000000000
                 Value = 1.000000000000000000
-                Position.X = 226.000000000000000000
+                Position.X = 228.000000000000000000
                 Position.Y = 16.000000000000000000
                 TextSettings.Font.Size = 25.000000000000000000
                 TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -27881,7 +27881,7 @@ object frmImpostor: TfrmImpostor
                 Align = Client
                 AutoSize = True
                 StyledSettings = [Family]
-                Size.Width = 226.000000000000000000
+                Size.Width = 228.000000000000000000
                 Size.Height = 65.000000000000000000
                 Size.PlatformDefault = False
                 TextSettings.Font.Size = 20.000000000000000000
@@ -27894,20 +27894,20 @@ object frmImpostor: TfrmImpostor
             object lytOpcoesDeJogo: TLayout
               Align = Top
               Position.Y = 337.000000000000000000
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 172.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 4
               object lytVerTema: TLayout
                 Align = Top
-                Size.Width = 346.000000000000000000
+                Size.Width = 348.000000000000000000
                 Size.Height = 43.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 3
                 object lbVerTema: TLabel
                   Align = Client
                   StyledSettings = [Family]
-                  Size.Width = 296.000000000000000000
+                  Size.Width = 298.000000000000000000
                   Size.Height = 43.000000000000000000
                   Size.PlatformDefault = False
                   TextSettings.Font.Size = 20.000000000000000000
@@ -27921,7 +27921,7 @@ object frmImpostor: TfrmImpostor
                   Fill.Color = claDarkgray
                   Margins.Top = 10.000000000000000000
                   Margins.Bottom = 10.000000000000000000
-                  Position.X = 296.000000000000000000
+                  Position.X = 298.000000000000000000
                   Position.Y = 10.000000000000000000
                   Size.Width = 50.000000000000000000
                   Size.Height = 23.000000000000000000
@@ -27947,14 +27947,14 @@ object frmImpostor: TfrmImpostor
               object lytDicas: TLayout
                 Align = Top
                 Position.Y = 43.000000000000000000
-                Size.Width = 346.000000000000000000
+                Size.Width = 348.000000000000000000
                 Size.Height = 43.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 6
                 object lblDicas: TLabel
                   Align = Client
                   StyledSettings = [Family]
-                  Size.Width = 296.000000000000000000
+                  Size.Width = 298.000000000000000000
                   Size.Height = 43.000000000000000000
                   Size.PlatformDefault = False
                   TextSettings.Font.Size = 20.000000000000000000
@@ -27968,7 +27968,7 @@ object frmImpostor: TfrmImpostor
                   Fill.Color = claDarkgray
                   Margins.Top = 10.000000000000000000
                   Margins.Bottom = 10.000000000000000000
-                  Position.X = 296.000000000000000000
+                  Position.X = 298.000000000000000000
                   Position.Y = 10.000000000000000000
                   Size.Width = 50.000000000000000000
                   Size.Height = 23.000000000000000000
@@ -27994,14 +27994,14 @@ object frmImpostor: TfrmImpostor
               object lytPontos: TLayout
                 Align = Top
                 Position.Y = 86.000000000000000000
-                Size.Width = 346.000000000000000000
+                Size.Width = 348.000000000000000000
                 Size.Height = 43.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 5
                 object lblPontos: TLabel
                   Align = Client
                   StyledSettings = [Family]
-                  Size.Width = 296.000000000000000000
+                  Size.Width = 298.000000000000000000
                   Size.Height = 43.000000000000000000
                   Size.PlatformDefault = False
                   TextSettings.Font.Size = 20.000000000000000000
@@ -28015,7 +28015,7 @@ object frmImpostor: TfrmImpostor
                   Fill.Color = claDarkgray
                   Margins.Top = 10.000000000000000000
                   Margins.Bottom = 10.000000000000000000
-                  Position.X = 296.000000000000000000
+                  Position.X = 298.000000000000000000
                   Position.Y = 10.000000000000000000
                   Size.Width = 50.000000000000000000
                   Size.Height = 23.000000000000000000
@@ -28086,7 +28086,7 @@ object frmImpostor: TfrmImpostor
             end
             object lytPlayers: TLayout
               Align = Top
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 65.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 2
@@ -28098,7 +28098,7 @@ object frmImpostor: TfrmImpostor
                 Min = 3.000000000000000000
                 Max = 21.000000000000000000
                 Value = 3.000000000000000000
-                Position.X = 226.000000000000000000
+                Position.X = 228.000000000000000000
                 Position.Y = 16.000000000000000000
                 TextSettings.Font.Size = 25.000000000000000000
                 TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -28113,7 +28113,7 @@ object frmImpostor: TfrmImpostor
                 Align = Client
                 AutoSize = True
                 StyledSettings = [Family]
-                Size.Width = 226.000000000000000000
+                Size.Width = 228.000000000000000000
                 Size.Height = 65.000000000000000000
                 Size.PlatformDefault = False
                 TextSettings.Font.Size = 20.000000000000000000
@@ -28126,7 +28126,7 @@ object frmImpostor: TfrmImpostor
             object lytTemas: TLayout
               Align = Top
               Position.Y = 130.000000000000000000
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 207.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
@@ -28134,8 +28134,8 @@ object frmImpostor: TfrmImpostor
                 Align = Top
                 AutoSize = True
                 StyledSettings = [Family]
-                Size.Width = 346.000000000000000000
-                Size.Height = 25.000000000000000000
+                Size.Width = 348.000000000000000000
+                Size.Height = 24.799999237060550000
                 Size.PlatformDefault = False
                 TextSettings.Font.Size = 20.000000000000000000
                 TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -28146,8 +28146,8 @@ object frmImpostor: TfrmImpostor
               end
               object lytTemas1: TLayout
                 Align = Top
-                Position.Y = 25.000000000000000000
-                Size.Width = 346.000000000000000000
+                Position.Y = 24.799999237060550000
+                Size.Width = 348.000000000000000000
                 Size.Height = 43.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 3
@@ -28199,7 +28199,7 @@ object frmImpostor: TfrmImpostor
                 end
                 object lytTemasMarcas: TLayout
                   Align = Right
-                  Position.X = 176.000000000000000000
+                  Position.X = 178.000000000000000000
                   Size.Width = 170.000000000000000000
                   Size.Height = 43.000000000000000000
                   Size.PlatformDefault = False
@@ -28247,8 +28247,8 @@ object frmImpostor: TfrmImpostor
               end
               object lytTemas4: TLayout
                 Align = Top
-                Position.Y = 154.000000000000000000
-                Size.Width = 346.000000000000000000
+                Position.Y = 153.800003051757800000
+                Size.Width = 348.000000000000000000
                 Size.Height = 43.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 2
@@ -28300,7 +28300,7 @@ object frmImpostor: TfrmImpostor
                 end
                 object lytTemasCantores: TLayout
                   Align = Right
-                  Position.X = 176.000000000000000000
+                  Position.X = 178.000000000000000000
                   Size.Width = 170.000000000000000000
                   Size.Height = 43.000000000000000000
                   Size.PlatformDefault = False
@@ -28348,8 +28348,8 @@ object frmImpostor: TfrmImpostor
               end
               object lytTemas3: TLayout
                 Align = Top
-                Position.Y = 111.000000000000000000
-                Size.Width = 346.000000000000000000
+                Position.Y = 110.800003051757800000
+                Size.Width = 348.000000000000000000
                 Size.Height = 43.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 1
@@ -28401,7 +28401,7 @@ object frmImpostor: TfrmImpostor
                 end
                 object lytTemasPersonagens: TLayout
                   Align = Right
-                  Position.X = 176.000000000000000000
+                  Position.X = 178.000000000000000000
                   Size.Width = 170.000000000000000000
                   Size.Height = 43.000000000000000000
                   Size.PlatformDefault = False
@@ -28449,8 +28449,8 @@ object frmImpostor: TfrmImpostor
               end
               object lytTemas2: TLayout
                 Align = Top
-                Position.Y = 68.000000000000000000
-                Size.Width = 346.000000000000000000
+                Position.Y = 67.800003051757810000
+                Size.Width = 348.000000000000000000
                 Size.Height = 43.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
@@ -28502,7 +28502,7 @@ object frmImpostor: TfrmImpostor
                 end
                 object lytTemasObjetos: TLayout
                   Align = Right
-                  Position.X = 176.000000000000000000
+                  Position.X = 178.000000000000000000
                   Size.Width = 170.000000000000000000
                   Size.Height = 43.000000000000000000
                   Size.PlatformDefault = False
@@ -28566,14 +28566,14 @@ object frmImpostor: TfrmImpostor
           ExplicitSize.cy = 49.000000000000000000
           object Layout2: TLayout
             Align = Top
-            Size.Width = 346.000000000000000000
+            Size.Width = 348.000000000000000000
             Size.Height = 50.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
             object Label1: TLabel
               Align = Client
               StyledSettings = [Family]
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 50.000000000000000000
               Size.PlatformDefault = False
               TextSettings.Font.Size = 26.000000000000000000
@@ -28593,19 +28593,19 @@ object frmImpostor: TfrmImpostor
           end
           object Layout3: TLayout
             Align = Client
-            Size.Width = 346.000000000000000000
-            Size.Height = 532.000000000000000000
+            Size.Width = 348.000000000000000000
+            Size.Height = 533.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
             object vertNomes: TVertScrollBox
               Align = Client
-              Size.Width = 346.000000000000000000
-              Size.Height = 532.000000000000000000
+              Size.Width = 348.000000000000000000
+              Size.Height = 533.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
               ShowScrollBars = False
-              Viewport.Width = 346.000000000000000000
-              Viewport.Height = 532.000000000000000000
+              Viewport.Width = 348.000000000000000000
+              Viewport.Height = 533.000000000000000000
             end
           end
         end
@@ -28624,13 +28624,13 @@ object frmImpostor: TfrmImpostor
           ExplicitSize.cy = 49.000000000000000000
           object vertPlayers: TVertScrollBox
             Align = Client
-            Size.Width = 346.000000000000000000
-            Size.Height = 582.000000000000000000
+            Size.Width = 348.000000000000000000
+            Size.Height = 583.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             ShowScrollBars = False
-            Viewport.Width = 346.000000000000000000
-            Viewport.Height = 582.000000000000000000
+            Viewport.Width = 348.000000000000000000
+            Viewport.Height = 583.000000000000000000
           end
         end
         object tbRegras: TTabItem
@@ -28648,20 +28648,20 @@ object frmImpostor: TfrmImpostor
           ExplicitSize.cy = 49.000000000000000000
           object Layout5: TLayout
             Align = Client
-            Size.Width = 346.000000000000000000
-            Size.Height = 582.000000000000000000
+            Size.Width = 348.000000000000000000
+            Size.Height = 583.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             object Layout6: TLayout
               Align = Top
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 66.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 3
               object Label2: TLabel
                 Align = Top
                 StyledSettings = [Family]
-                Size.Width = 346.000000000000000000
+                Size.Width = 348.000000000000000000
                 Size.Height = 25.000000000000000000
                 Size.PlatformDefault = False
                 TextSettings.Font.Size = 20.000000000000000000
@@ -28674,7 +28674,7 @@ object frmImpostor: TfrmImpostor
               object lblRegrasTema: TLabel
                 Align = Client
                 StyledSettings = [Family]
-                Size.Width = 346.000000000000000000
+                Size.Width = 348.000000000000000000
                 Size.Height = 41.000000000000000000
                 Size.PlatformDefault = False
                 TextSettings.Font.Size = 26.000000000000000000
@@ -28695,14 +28695,14 @@ object frmImpostor: TfrmImpostor
             object Layout7: TLayout
               Align = Top
               Position.Y = 66.000000000000000000
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 66.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 2
               object Label4: TLabel
                 Align = Top
                 StyledSettings = [Family]
-                Size.Width = 346.000000000000000000
+                Size.Width = 348.000000000000000000
                 Size.Height = 25.000000000000000000
                 Size.PlatformDefault = False
                 TextSettings.Font.Size = 20.000000000000000000
@@ -28716,7 +28716,7 @@ object frmImpostor: TfrmImpostor
                 Align = Top
                 StyledSettings = [Family]
                 Position.Y = 25.000000000000000000
-                Size.Width = 346.000000000000000000
+                Size.Width = 348.000000000000000000
                 Size.Height = 49.000000000000000000
                 Size.PlatformDefault = False
                 TextSettings.Font.Size = 26.000000000000000000
@@ -28737,8 +28737,8 @@ object frmImpostor: TfrmImpostor
             object Layout8: TLayout
               Align = Client
               Margins.Top = 20.000000000000000000
-              Size.Width = 346.000000000000000000
-              Size.Height = 430.000000000000000000
+              Size.Width = 348.000000000000000000
+              Size.Height = 431.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
               object recBackResposta: TRectangle
@@ -28811,7 +28811,7 @@ object frmImpostor: TfrmImpostor
               object Label7: TLabel
                 Align = Top
                 StyledSettings = [Family]
-                Size.Width = 346.000000000000000000
+                Size.Width = 348.000000000000000000
                 Size.Height = 25.000000000000000000
                 Size.PlatformDefault = False
                 TextSettings.Font.Size = 20.000000000000000000
@@ -28839,14 +28839,14 @@ object frmImpostor: TfrmImpostor
           ExplicitSize.cy = 49.000000000000000000
           object Layout10: TLayout
             Align = Client
-            Size.Width = 346.000000000000000000
-            Size.Height = 582.000000000000000000
+            Size.Width = 348.000000000000000000
+            Size.Height = 583.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             object lblCondicaoNomePlayer: TLabel
               Align = Top
               StyledSettings = [Family, Style]
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 145.000000000000000000
               Size.PlatformDefault = False
               TextSettings.Font.Size = 70.000000000000000000
@@ -28864,8 +28864,8 @@ object frmImpostor: TfrmImpostor
             end
             object Layout11: TLayout
               Align = Client
-              Size.Width = 346.000000000000000000
-              Size.Height = 437.000000000000000000
+              Size.Width = 348.000000000000000000
+              Size.Height = 438.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 2
               object recBackPlayer: TRectangle
@@ -28949,23 +28949,23 @@ object frmImpostor: TfrmImpostor
           ExplicitSize.cy = 49.000000000000000000
           object vertPontos: TVertScrollBox
             Align = Client
-            Size.Width = 346.000000000000000000
-            Size.Height = 467.000000000000000000
+            Size.Width = 348.000000000000000000
+            Size.Height = 468.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
-            Viewport.Width = 346.000000000000000000
-            Viewport.Height = 467.000000000000000000
+            Viewport.Width = 348.000000000000000000
+            Viewport.Height = 468.000000000000000000
           end
           object Layout1: TLayout
             Align = Top
-            Size.Width = 346.000000000000000000
+            Size.Width = 348.000000000000000000
             Size.Height = 50.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 3
             object Label9: TLabel
               Align = Client
               StyledSettings = [Family]
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 50.000000000000000000
               Size.PlatformDefault = False
               TextSettings.Font.Size = 26.000000000000000000
@@ -28986,14 +28986,14 @@ object frmImpostor: TfrmImpostor
           object Layout4: TLayout
             Align = Top
             Position.Y = 50.000000000000000000
-            Size.Width = 346.000000000000000000
+            Size.Width = 348.000000000000000000
             Size.Height = 65.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
             object Label11: TLabel
               Align = Client
               StyledSettings = [Family]
-              Size.Width = 346.000000000000000000
+              Size.Width = 348.000000000000000000
               Size.Height = 65.000000000000000000
               Size.PlatformDefault = False
               TextSettings.Font.Size = 14.000000000000000000
@@ -29018,7 +29018,7 @@ object frmImpostor: TfrmImpostor
             item
             end>
           IsSelected = False
-          Size.Width = 52.000000000000000000
+          Size.Width = 54.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
@@ -29030,8 +29030,8 @@ object frmImpostor: TfrmImpostor
             Align = Top
             AutoSize = True
             StyledSettings = [Family]
-            Size.Width = 346.000000000000000000
-            Size.Height = 49.000000000000000000
+            Size.Width = 348.000000000000000000
+            Size.Height = 48.799999237060550000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 40.000000000000000000
             TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -29044,8 +29044,8 @@ object frmImpostor: TfrmImpostor
             Align = Client
             AutoSize = True
             StyledSettings = [Family]
-            Size.Width = 346.000000000000000000
-            Size.Height = 533.000000000000000000
+            Size.Width = 348.000000000000000000
+            Size.Height = 534.200012207031300000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 60.000000000000000000
             TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -29217,7 +29217,7 @@ object frmImpostor: TfrmImpostor
               Margins.Right = 10.000000000000000000
               Position.X = 10.000000000000000000
               Size.Width = 322.000000000000000000
-              Size.Height = 1157.000000000000000000
+              Size.Height = 1156.800048828125000000
               Size.PlatformDefault = False
               TextSettings.Font.Size = 20.000000000000000000
               TextSettings.Font.StyleExt = {00070000000000000004000000}
